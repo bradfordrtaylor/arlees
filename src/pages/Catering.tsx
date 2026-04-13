@@ -16,7 +16,7 @@ const Catering = () => {
       </section>
 
       <section className="section-padding max-w-4xl mx-auto text-center">
-        <h2 className="font-heading text-3xl font-bold mb-6">Bring Arlee's to Your Next Event</h2>
+        <h2 className="font-heading text-3xl font-bold mb-6">Bring <span className="font-brand">Arlee's Raw Blends</span> to Your Next Event</h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
           Whether it's a corporate event, birthday celebration, wellness retreat, or any special occasion, Arlee's Raw Blends offers full catering services with our signature cold pressed juices, raw vegan foods, salads, wraps, and desserts.
         </p>
@@ -27,8 +27,8 @@ const Catering = () => {
         <div className="grid sm:grid-cols-3 gap-6 mb-10">
           {[
             { title: "Juice Packages", desc: "Cold pressed juice selections for groups of any size." },
-            { title: "Food Platters", desc: "Wraps, salads, raw vegan pizza, nori rolls, and snacks." },
-            { title: "Dessert Trays", desc: "Cashew cheesecakes, brownies, mousse parfaits, and more." },
+            { title: "Food Platters", desc: "Collard green wraps, salads, raw vegan pizza, nori rolls, and snacks." },
+            { title: "Dessert Trays", desc: "Cashew cheesecake slices, chocolate mousse with brownie, key lime pie squares, and more." },
           ].map((item) => (
             <div key={item.title} className="bg-card border rounded-lg p-6 shadow-sm">
               <h3 className="font-heading text-lg font-semibold mb-2">{item.title}</h3>

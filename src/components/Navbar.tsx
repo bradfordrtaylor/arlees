@@ -19,8 +19,8 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="font-heading text-2xl md:text-3xl font-bold text-primary">
-          Arlee's<span className="text-foreground text-sm font-body font-normal ml-1 hidden sm:inline">Raw Blends</span>
+        <Link to="/" className="text-2xl md:text-3xl font-bold text-primary font-brand">
+          Arlee's Raw Blends
         </Link>
 
         {/* Desktop nav */}

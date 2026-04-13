@@ -2,25 +2,26 @@ import Layout from "@/components/Layout";
 import cleanseImg from "@/assets/cleanse-bottles.jpg";
 import rawFoodImg from "@/assets/raw-food.jpg";
 import dessertsImg from "@/assets/desserts.jpg";
+import collardWrapImg from "@/assets/collard-wrap.jpg";
 
 const categories = [
   {
     title: "Cold Pressed Juices",
     image: cleanseImg,
-    description: "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold-press process. No heat, no oxidation — just pure, nutrient-dense juice packed with enzymes and vibrant flavor.",
+    description: "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold-press process. No heat, no oxidation — just pure, nutrient-dense juice packed with enzymes and vibrant flavor. Served in our signature 16 oz square bottles.",
     items: ["Kale Blends", "Beet Blend", "Pineapple Blend", "Lemon Blend", "Lime Blend", "Almond Blend"],
   },
   {
     title: "Raw Vegan Foods",
-    image: rawFoodImg,
-    description: "Vibrant salads, wraps, raw vegan pizza, nori rolls, and crunchy nutrient-packed snacks. Everything is made without gluten, GMOs, preservatives, or refined sugars.",
-    items: ["Salads", "Wraps", "Raw Vegan Pizza", "Nori Rolls", "Snacks"],
+    image: collardWrapImg,
+    description: "Vibrant salads, collard green wraps, raw vegan pizza, nori rolls, and crunchy nutrient-packed snacks. All wraps are made exclusively with fresh collard greens — never bread or tortillas. Everything is made without gluten, GMOs, preservatives, or refined sugars.",
+    items: ["Salads", "Collard Green Wraps", "Raw Vegan Pizza", "Nori Rolls", "Snacks"],
   },
   {
     title: "Vegan Desserts",
     image: dessertsImg,
     description: "Pure, plant-based indulgence made with 100% organic, raw ingredients. Free from gluten, GMOs, and refined sugars.",
-    items: ["Cashew Cheesecakes", "Chocolate Mousse Parfaits", "Brownies", "Almond Butter Cups"],
+    items: ["Cashew Cheesecake Slices", "Chocolate Mousse with Brownie", "Key Lime Pie Squares", "Almond Butter Cups"],
   },
 ];
 
