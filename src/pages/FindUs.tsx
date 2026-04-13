@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin, Clock, Phone, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const FindUs = () => {
@@ -33,10 +33,21 @@ const FindUs = () => {
               <Clock className="text-primary mt-1 shrink-0" size={24} />
               <div>
                 <h3 className="font-heading text-lg font-semibold mb-1">Hours</h3>
-                <p className="text-muted-foreground text-sm">Contact us for current hours of operation.</p>
+                <div className="text-muted-foreground text-sm space-y-1">
+                  <p>Monday – Friday: 8:00 AM – 3:00 PM</p>
+                  <p>Saturday: 9:00 AM – 3:00 PM</p>
+                  <p>Sunday: Closed</p>
+                </div>
               </div>
             </div>
 
+            <div className="flex gap-4">
+              <Truck className="text-primary mt-1 shrink-0" size={24} />
+              <div>
+                <h3 className="font-heading text-lg font-semibold mb-1">Delivery</h3>
+                <p className="text-muted-foreground text-sm">Delivery available through DoorDash via our Toast ordering system.</p>
+              </div>
+            </div>
 
             <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold mt-4">

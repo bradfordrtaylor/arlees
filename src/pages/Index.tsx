@@ -111,8 +111,8 @@ const Index = () => {
       {/* CTA */}
       <section className="bg-secondary text-secondary-foreground section-padding text-center">
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Nourish Your Body?</h2>
-        <p className="text-secondary-foreground/70 mb-8 max-w-xl mx-auto">
-          Order fresh juices, raw foods, and vegan desserts online for pickup.
+        <p className="text-secondary-foreground/70 mb-4 max-w-xl mx-auto">
+          Order fresh juices, raw foods, and vegan desserts online for pickup or delivery via DoorDash.
         </p>
         <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
           <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg px-10">
