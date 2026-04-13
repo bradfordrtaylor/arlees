@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { MapPin, Clock, Phone, Building2 } from "lucide-react";
+import { MapPin, Clock, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const FindUs = () => {
@@ -13,7 +13,7 @@ const FindUs = () => {
             <div className="flex gap-4">
               <MapPin className="text-primary mt-1 shrink-0" size={24} />
               <div>
-                <h3 className="font-heading text-lg font-semibold mb-1">Distribution Center</h3>
+                <h3 className="font-heading text-lg font-semibold mb-1">Our Location</h3>
                 <p className="text-muted-foreground">25 South Warren St.</p>
                 <p className="text-muted-foreground">Trenton, NJ 08608</p>
               </div>
@@ -37,18 +37,6 @@ const FindUs = () => {
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <Building2 className="text-primary mt-1 shrink-0" size={24} />
-              <div>
-                <h3 className="font-heading text-lg font-semibold mb-1">Offices</h3>
-                <div className="text-muted-foreground text-sm space-y-1">
-                  <p className="font-medium text-foreground">Trenton, NJ</p>
-                  <p>Office address coming soon</p>
-                  <p className="font-medium text-foreground mt-3">Philadelphia, PA</p>
-                  <p>Office address coming soon</p>
-                </div>
-              </div>
-            </div>
 
             <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold mt-4">
@@ -59,7 +47,7 @@ const FindUs = () => {
 
           <div className="bg-muted rounded-lg overflow-hidden min-h-[300px] flex items-center justify-center">
             <iframe
-              title="Arlee's Raw Blends Distribution Center"
+              title="Arlee's Raw Blends Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.5!2d-74.7713!3d40.2206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c1562b97e8cd87%3A0x0!2s25+South+Warren+St%2C+Trenton%2C+NJ+08608!5e0!3m2!1sen!2sus!4v1700000000000"
               className="w-full h-full min-h-[300px] border-0"
               loading="lazy"
