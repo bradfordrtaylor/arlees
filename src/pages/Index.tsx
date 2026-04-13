@@ -5,21 +5,23 @@ import heroImg from "@/assets/hero-juices.jpg";
 import rawFoodImg from "@/assets/raw-food.jpg";
 import cleanseImg from "@/assets/cleanse-bottles.jpg";
 import dessertsImg from "@/assets/desserts.jpg";
+import collardWrapImg from "@/assets/collard-wrap.jpg";
 
 const Index = () => {
   return (
     <Layout>
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <img src={heroImg} alt="Fresh organic cold pressed juices" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
+        <img src={heroImg} alt="Fresh organic cold pressed juices in square bottles" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80" />
         <div className="relative z-10 text-center px-6 max-w-3xl animate-fade-in">
           <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Trenton, NJ</p>
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-background leading-tight mb-4">
-            Your Health <span className="text-primary">Matters</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-background leading-tight mb-4">
+            <span className="font-heading">Your Health </span>
+            <span className="text-primary font-heading">Matters</span>
           </h1>
           <p className="text-background/80 text-lg md:text-xl mb-3">
-            Nourish Your Body With Arlee's Raw Blends
+            Nourish Your Body With <span className="font-brand">Arlee's Raw Blends</span>
           </p>
           <p className="text-primary/90 text-sm md:text-base font-medium mb-8">
             Always Fresh · Healthy · 100% Organic · Vegan · Raw · Gluten & GMO Free
@@ -43,7 +45,7 @@ const Index = () => {
       <section className="section-padding max-w-5xl mx-auto text-center">
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Who Are We</h2>
         <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-4">
-          At Arlee's Raw Blends, we make all our juices and foods fresh daily using only 100% organic, vegan, and raw ingredients from trusted partners. Every sip and bite is not just delicious—it's packed with real health benefits you can feel.
+          At <span className="font-brand font-semibold text-foreground">Arlee's Raw Blends</span>, we make all our juices and foods fresh daily using only 100% organic, vegan, and raw ingredients from trusted partners. Every sip and bite is not just delicious—it's packed with real health benefits you can feel.
         </p>
         <p className="text-primary font-heading text-xl italic">Raw Food, Raw Soul.</p>
       </section>
@@ -80,11 +82,14 @@ const Index = () => {
       {/* Raw Foods */}
       <section className="section-padding bg-muted">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <img src={rawFoodImg} alt="Organic raw vegan food" className="rounded-lg shadow-lg order-2 md:order-1" width={1200} height={800} loading="lazy" />
+          <img src={collardWrapImg} alt="Raw vegan collard green wraps" className="rounded-lg shadow-lg order-2 md:order-1" width={1200} height={800} loading="lazy" />
           <div className="order-1 md:order-2">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">100% Organic Raw Foods</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              From vibrant salads and collard green wraps to raw vegan pizza and crunchy snacks, everything is made without gluten, GMOs, preservatives or refined sugars. Our wraps are made exclusively with fresh collard greens—never bread or tortillas.
+            </p>
             <p className="text-muted-foreground leading-relaxed">
-              From vibrant salads and wraps to raw vegan pizza and crunchy snacks, everything is made without gluten, GMOs, preservatives or refined sugars. Enjoy pure, delicious flavors and real health benefits in every bite.
+              Enjoy pure, delicious flavors and real health benefits in every bite.
             </p>
           </div>
         </div>
@@ -95,11 +100,11 @@ const Index = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Vegan Desserts</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Made with 100% organic, raw ingredients and free from gluten, GMOs, and refined sugars. Enjoy creamy cashew cheesecakes, rich chocolate mousse parfaits, decadent brownies, almond butter cups, and more—guilt-free indulgence that tastes amazing.
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Made with 100% organic, raw ingredients and free from gluten, GMOs, and refined sugars. Enjoy creamy cashew cheesecake slices, rich chocolate mousse with brownie, tangy key lime pie squares, decadent almond butter cups, and more—guilt-free indulgence that tastes amazing.
             </p>
           </div>
-          <img src={dessertsImg} alt="Vegan desserts" className="rounded-lg shadow-lg" width={1200} height={800} loading="lazy" />
+          <img src={dessertsImg} alt="Raw vegan desserts - cheesecake, chocolate mousse, key lime squares" className="rounded-lg shadow-lg" width={1200} height={800} loading="lazy" />
         </div>
       </section>
 

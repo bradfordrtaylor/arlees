@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import cleanseImg from "@/assets/cleanse-bottles.jpg";
+import { Button } from "@/components/ui/button";
 
 const blends = {
   relieve: {
@@ -69,6 +70,19 @@ const Cleanses = () => {
             <p className="text-primary font-semibold text-sm mt-4">100% ORGANIC</p>
           </div>
         ))}
+
+        {/* Build Your Own */}
+        <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
+          <h2 className="font-heading text-3xl font-bold mb-4">Build Your Own Cleanse</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
+            Want to customize your cleanse? Build your own from any of the <span className="font-brand font-semibold text-foreground">Arlee's Raw Blends</span> juices currently in stock. Mix and match your favorite blends to create a cleanse that's perfect for you.
+          </p>
+          <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
+              Order Your Custom Cleanse
+            </Button>
+          </a>
+        </div>
       </div>
     </Layout>
   );
