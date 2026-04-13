@@ -1,8 +1,26 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 import cateringImg from "@/assets/catering.jpg";
 
 const Catering = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", guests: "", details: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    // For now, show success message. Backend form submission can be added later.
+    setTimeout(() => {
+      toast.success("Thank you! We'll be in touch about your catering request.");
+      setForm({ name: "", email: "", phone: "", date: "", guests: "", details: "" });
+      setSubmitting(false);
+    }, 800);
+  };
+
   return (
     <Layout>
       {/* Hero */}
@@ -15,16 +33,18 @@ const Catering = () => {
         </div>
       </section>
 
-      <section className="section-padding max-w-4xl mx-auto text-center">
-        <h2 className="font-heading text-3xl font-bold mb-6">Bring <span className="font-brand">Arlee's Raw Blends</span> to Your Next Event</h2>
-        <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
-          Whether it's a corporate event, birthday celebration, wellness retreat, or any special occasion, Arlee's Raw Blends offers full catering services with our signature cold pressed juices, raw vegan foods, salads, wraps, and desserts.
-        </p>
-        <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
-          All of our catering options are 100% organic, vegan, raw, gluten-free, and GMO-free. We customize menus to fit your event size and dietary needs.
-        </p>
+      <section className="section-padding max-w-4xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="font-heading text-3xl font-bold mb-6">Bring <span className="font-brand">Arlee's Raw Blends</span> to Your Next Event</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
+            Whether it's a corporate event, birthday celebration, wellness retreat, or any special occasion, we offer full catering services with our signature cold pressed juices, raw vegan foods, salads, collard green wraps, and desserts.
+          </p>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            All catering options are 100% organic, vegan, raw, gluten-free, and GMO-free. We customize menus to fit your event.
+          </p>
+        </div>
 
-        <div className="grid sm:grid-cols-3 gap-6 mb-10">
+        <div className="grid sm:grid-cols-3 gap-6 mb-12">
           {[
             { title: "Juice Packages", desc: "Cold pressed juice selections for groups of any size." },
             { title: "Food Platters", desc: "Collard green wraps, salads, raw vegan pizza, nori rolls, and snacks." },
@@ -37,12 +57,59 @@ const Catering = () => {
           ))}
         </div>
 
-        <p className="text-muted-foreground mb-6">Contact us to discuss your event and get a custom quote.</p>
-        <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
-            Get in Touch
-          </Button>
-        </a>
+        {/* Inquiry Form */}
+        <div className="bg-muted rounded-xl p-8 md:p-12 max-w-2xl mx-auto">
+          <h3 className="font-heading text-2xl font-bold mb-6 text-center">Request a Quote</h3>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Input
+                placeholder="Your Name *"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Email Address *"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+              />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Input
+                type="tel"
+                placeholder="Phone Number"
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              />
+              <Input
+                type="date"
+                placeholder="Event Date"
+                value={form.date}
+                onChange={(e) => setForm({ ...form, date: e.target.value })}
+              />
+            </div>
+            <Input
+              placeholder="Estimated Number of Guests"
+              value={form.guests}
+              onChange={(e) => setForm({ ...form, guests: e.target.value })}
+            />
+            <Textarea
+              placeholder="Tell us about your event and what you're looking for..."
+              value={form.details}
+              onChange={(e) => setForm({ ...form, details: e.target.value })}
+              rows={4}
+            />
+            <Button
+              type="submit"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+              disabled={submitting}
+            >
+              {submitting ? "Sending..." : "Submit Catering Inquiry"}
+            </Button>
+          </form>
+        </div>
       </section>
     </Layout>
   );

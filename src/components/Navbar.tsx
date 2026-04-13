@@ -1,19 +1,28 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const navLinks = [
+const mainLinks = [
   { label: "Home", path: "/" },
   { label: "Product Information", path: "/product-information" },
+  {
+    label: "About",
+    path: "/about",
+    dropdown: [
+      { label: "Our Story", path: "/about" },
+      { label: "FAQ", path: "/faq" },
+      { label: "Blog", path: "/blog" },
+    ],
+  },
   { label: "Cleanses", path: "/cleanses" },
-  { label: "Blog", path: "/blog" },
-  { label: "Find Us", path: "/find-us" },
+  { label: "Gift Cards", path: "/gift-cards" },
   { label: "Catering", path: "/catering" },
 ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const location = useLocation();
 
   return (
@@ -25,19 +34,54 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary ${
-                location.pathname === link.path
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {mainLinks.map((link) =>
+            link.dropdown ? (
+              <div
+                key={link.path}
+                className="relative group"
+                onMouseEnter={() => setAboutOpen(true)}
+                onMouseLeave={() => setAboutOpen(false)}
+              >
+                <button
+                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary inline-flex items-center gap-1 ${
+                    ["/about", "/faq", "/blog"].includes(location.pathname)
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                  <ChevronDown size={14} />
+                </button>
+                {aboutOpen && (
+                  <div className="absolute top-full left-0 mt-0 bg-card border rounded-lg shadow-lg py-2 min-w-[160px] z-50">
+                    {link.dropdown.map((sub) => (
+                      <Link
+                        key={sub.path}
+                        to={sub.path}
+                        className={`block px-4 py-2 text-sm hover:bg-muted transition-colors ${
+                          location.pathname === sub.path ? "text-primary font-semibold" : "text-muted-foreground"
+                        }`}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary ${
+                  location.pathname === link.path
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <a
             href="https://order.toasttab.com/online/arlees-raw-blends"
             target="_blank"
@@ -62,20 +106,52 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden border-t bg-card px-6 pb-6 pt-4 space-y-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setMobileOpen(false)}
-              className={`block px-3 py-2 rounded-md text-sm font-medium ${
-                location.pathname === link.path
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {mainLinks.map((link) =>
+            link.dropdown ? (
+              <div key={link.path}>
+                <button
+                  onClick={() => setAboutOpen(!aboutOpen)}
+                  className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-sm font-medium ${
+                    ["/about", "/faq", "/blog"].includes(location.pathname)
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                  <ChevronDown size={14} className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
+                </button>
+                {aboutOpen && (
+                  <div className="pl-6 space-y-1 mt-1">
+                    {link.dropdown.map((sub) => (
+                      <Link
+                        key={sub.path}
+                        to={sub.path}
+                        onClick={() => setMobileOpen(false)}
+                        className={`block px-3 py-2 rounded-md text-sm ${
+                          location.pathname === sub.path ? "text-primary font-semibold" : "text-muted-foreground"
+                        }`}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMobileOpen(false)}
+                className={`block px-3 py-2 rounded-md text-sm font-medium ${
+                  location.pathname === link.path
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <a
             href="https://order.toasttab.com/online/arlees-raw-blends"
             target="_blank"

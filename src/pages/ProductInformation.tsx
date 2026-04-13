@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { Button } from "@/components/ui/button";
 import cleanseImg from "@/assets/cleanse-bottles.jpg";
 import rawFoodImg from "@/assets/raw-food.jpg";
 import dessertsImg from "@/assets/desserts.jpg";
@@ -51,6 +52,16 @@ const ProductInformation = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Order CTA */}
+        <div className="text-center mt-16">
+          <p className="text-muted-foreground mb-4">Ready to try it for yourself?</p>
+          <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
+              Order Now
+            </Button>
+          </a>
         </div>
       </section>
     </Layout>
