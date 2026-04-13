@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h4 className="font-heading text-lg font-semibold mb-3">Distribution Center</h4>
+            <h4 className="font-heading text-lg font-semibold mb-3">Our Location</h4>
             <div className="text-sm text-secondary-foreground/70 space-y-1">
               <p>25 South Warren St.</p>
               <p>Trenton, NJ 08608</p>
