@@ -29,31 +29,18 @@ const About = () => {
             Why <span className="font-brand">Arlee's Raw Blends</span>?
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-card border rounded-lg p-6 shadow-sm">
-              <h3 className="font-heading text-lg font-semibold mb-2 text-primary">Local</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                We are committed to using locally grown produce that is 100% organic. That means delivering an authentic taste that is both crisp and refreshing. It's better for our economy, the environment, and our bodies.
-              </p>
-            </div>
-            <div className="bg-card border rounded-lg p-6 shadow-sm">
-              <h3 className="font-heading text-lg font-semibold mb-2 text-primary">Cold Pressed</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                By cold pressing our juices, we extract the essential enzymes and micronutrients while preserving the flavor in every sip. We stir up the perfect blend, bottle it up, and have it ready for you to enjoy.
-              </p>
-            </div>
-            <div className="bg-card border rounded-lg p-6 shadow-sm">
-              <h3 className="font-heading text-lg font-semibold mb-2 text-primary">Eco-Friendly Bottles</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                We use 16 oz square, clear, recyclable PET juice bottles. They're food-grade, BPA-free, FDA certified for beverages, and widely accepted in recycling programs.
-              </p>
-            </div>
-            <div className="bg-card border rounded-lg p-6 shadow-sm">
-              <h3 className="font-heading text-lg font-semibold mb-2 text-primary">Drink Real</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Our juices are cold pressed fresh daily from 100% local organic fruits and vegetables. We are proud to say... "Our juice is just the juice!"
-              </p>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {[
+              { title: "Local", text: "We are committed to using locally grown produce that is 100% organic. That means delivering an authentic taste that is both crisp and refreshing. It's better for our economy, the environment, and our bodies." },
+              { title: "Cold Pressed", text: "By cold pressing our juices, we extract the essential enzymes and micronutrients while preserving the flavor in every sip. We stir up the perfect blend, bottle it up, and have it ready for you to enjoy." },
+              { title: "Eco-Friendly Bottles", text: "We use 16 oz square, clear, recyclable PET juice bottles. They're food-grade, BPA-free, FDA certified for beverages, and widely accepted in recycling programs." },
+              { title: "Drink Real", text: "Our juices are cold pressed fresh daily from 100% local organic fruits and vegetables. We are proud to say... \"Our juice is just the juice!\"" },
+            ].map((card) => (
+              <div key={card.title} className="bg-card border rounded-lg p-5 shadow-sm flex flex-col">
+                <h3 className="font-heading text-lg font-semibold mb-2 text-primary">{card.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{card.text}</p>
+              </div>
+            ))}
           </div>
 
           <p className="text-muted-foreground leading-relaxed mb-6">
