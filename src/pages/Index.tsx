@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import heroImg from "@/assets/hero-bottles.jpg";
 import foodSpreadImg from "@/assets/food-spread.jpg";
-import cleanseImg from "@/assets/cleanse-bottles-real.jpg";
-import cheesecakesImg from "@/assets/cheesecakes.jpg";
-import bottlesShelfImg from "@/assets/bottles-shelf.jpg";
+import cleanseImg from "@/assets/cleanse-bottles-enhanced.jpg";
+import cheesecakesImg from "@/assets/cheesecakes-enhanced.jpg";
+import bottlesShelfImg from "@/assets/bottles-shelf-enhanced.jpg";
 import saladImg from "@/assets/salad-real.jpg";
 
 const Index = () => {
