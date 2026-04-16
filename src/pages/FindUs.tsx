@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { MapPin, Clock, Phone, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import storefrontDay from "@/assets/storefront-enhanced.jpg";
+import storefrontDay from "@/assets/storefront-day.jpg";
 import storefrontNight from "@/assets/storefront-night.jpg";
 
 const FindUs = () => {
