@@ -12,6 +12,7 @@ import ProductInformation from "./pages/ProductInformation";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import GiftCards from "./pages/GiftCards";
+import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/gift-cards" element={<GiftCards />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
