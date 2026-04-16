@@ -1,26 +1,25 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import bottlesShelfImg from "@/assets/bottles-shelf-vibrant.jpg";
-import foodSpreadImg from "@/assets/food-spread-vibrant.jpg";
-import cheesecakesImg from "@/assets/cheesecakes-enhanced.jpg";
-import saladImg from "@/assets/salad-vibrant.jpg";
+import productJuicesImg from "@/assets/product-juices.jpg";
+import productRawfoodImg from "@/assets/product-rawfood.jpg";
+import productDessertsImg from "@/assets/product-desserts.jpg";
 
 const categories = [
   {
     title: "Cold Pressed Juices",
-    image: bottlesShelfImg,
+    image: productJuicesImg,
     description: "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold-press process. No heat, no oxidation — just pure, nutrient-dense juice packed with enzymes and vibrant flavor. Served in our signature 16 oz square bottles.",
     items: ["Kale Blends", "Beet Blend", "Pineapple Blend", "Lemon Blend", "Lime Blend", "Almond Blend"],
   },
   {
     title: "Raw Vegan Foods",
-    image: foodSpreadImg,
+    image: productRawfoodImg,
     description: "Vibrant salads, collard green wraps, raw vegan pizza, nori rolls, and crunchy nutrient-packed snacks. All wraps are made exclusively with fresh collard greens — never bread or tortillas. Everything is made without gluten, GMOs, preservatives, or refined sugars.",
     items: ["Salads", "Collard Green Wraps", "Raw Vegan Pizza", "Nori Rolls", "Snacks"],
   },
   {
     title: "Vegan Desserts",
-    image: cheesecakesImg,
+    image: productDessertsImg,
     description: "Pure, plant-based indulgence made with 100% organic, raw ingredients. Free from gluten, GMOs, and refined sugars.",
     items: ["Cashew Cheesecake Slices", "Chocolate Mousse with Brownie", "Key Lime Pie Squares", "Almond Butter Cups"],
   },
