@@ -4,7 +4,14 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/arlees-logo.png";
 
-const mainLinks = [
+type NavLink = {
+  label: string;
+  path: string;
+  external?: boolean;
+  dropdown?: { label: string; path: string }[];
+};
+
+const mainLinks: NavLink[] = [
   { label: "Home", path: "/" },
   { label: "Product Information", path: "/product-information" },
   {
@@ -70,6 +77,16 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+            ) : link.external ? (
+              <a
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary text-muted-foreground"
+              >
+                {link.label}
+              </a>
             ) : (
               <Link
                 key={link.path}
@@ -139,6 +156,17 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+            ) : link.external ? (
+              <a
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="block px-3 py-2 rounded-md text-sm font-medium text-muted-foreground"
+              >
+                {link.label}
+              </a>
             ) : (
               <Link
                 key={link.path}
