@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import heroImg from "@/assets/hero-bottles.jpg";
-import foodSpreadImg from "@/assets/food-spread.jpg";
+import heroImg from "@/assets/hero-bottles-vibrant.jpg";
+import foodSpreadImg from "@/assets/food-spread-vibrant.jpg";
 import cleanseImg from "@/assets/cleanse-bottles-enhanced.jpg";
 import cheesecakesImg from "@/assets/cheesecakes-enhanced.jpg";
-import bottlesShelfImg from "@/assets/bottles-shelf-enhanced.jpg";
-import saladImg from "@/assets/salad-real.jpg";
+import bottlesShelfImg from "@/assets/bottles-shelf-vibrant.jpg";
 
 const Index = () => {
   return (
