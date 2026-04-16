@@ -88,8 +88,6 @@ const Navbar = () => {
             href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
             target="_blank"
             rel="noopener noreferrer"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <Button size="sm" className="ml-2 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
               Order Now
