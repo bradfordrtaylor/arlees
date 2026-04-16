@@ -18,7 +18,7 @@ const mainLinks = [
     ],
   },
   { label: "Cleanses", path: "/cleanses" },
-  { label: "Gift Cards", path: "/gift-cards" },
+  { label: "Gift Cards", path: "https://order.toasttab.com/egiftcards/arlees-raw-blends-trenton", external: true },
   { label: "Catering", path: "/catering" },
 ];
 
@@ -85,7 +85,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
+            href="https://order.toasttab.com/online/arlees-raw-blends-trenton"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -155,7 +155,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
+            href="https://order.toasttab.com/online/arlees-raw-blends-trenton"
             target="_blank"
             rel="noopener noreferrer"
             className="block"

@@ -58,10 +58,10 @@ const GiftCards = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <p className="text-muted-foreground mb-4">Gift cards can be purchased in-store or by contacting us directly.</p>
-          <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+          <p className="text-muted-foreground mb-4">Purchase a digital gift card online and send it instantly.</p>
+          <a href="https://order.toasttab.com/egiftcards/arlees-raw-blends-trenton" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
-              Order Online
+              Buy a Gift Card
             </Button>
           </a>
         </div>

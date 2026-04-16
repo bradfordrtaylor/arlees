@@ -51,7 +51,7 @@ const FindUs = () => {
               </div>
             </div>
 
-            <a href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st" target="_blank" rel="noopener noreferrer">
+            <a href="https://order.toasttab.com/online/arlees-raw-blends-trenton" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold mt-4">
                 Order Online
               </Button>

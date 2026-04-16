@@ -103,7 +103,7 @@ const Footer = () => {
               <p>100% Organic · Vegan · Raw</p>
               <p className="text-xs">Delivery available via DoorDash</p>
               <a
-                href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
+                href="https://order.toasttab.com/online/arlees-raw-blends-trenton"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-3 text-primary font-semibold hover:underline"
