@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram } from "lucide-react";
+import { Instagram, Facebook, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -59,6 +59,7 @@ const Footer = () => {
               <Link to="/cleanses" className="block hover:text-primary transition-colors">Cleanses</Link>
               <Link to="/gift-cards" className="block hover:text-primary transition-colors">Gift Cards</Link>
               <Link to="/faq" className="block hover:text-primary transition-colors">FAQ</Link>
+              <Link to="/find-us" className="block hover:text-primary transition-colors">Find Us</Link>
               <Link to="/blog" className="block hover:text-primary transition-colors">Blog</Link>
               <Link to="/catering" className="block hover:text-primary transition-colors">Catering</Link>
             </div>
@@ -81,14 +82,19 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg font-semibold mb-3">Follow Us</h4>
             <div className="flex gap-3 mb-4">
-              {/* Placeholder links — replace with actual URLs */}
-              <a href="#" className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/arleesrawblends/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="TikTok">
+              <a href="https://www.facebook.com/arleesrawblends/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Facebook">
+                <Facebook size={20} />
+              </a>
+              <a href="https://x.com/arleesrawblends" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="X (Twitter)">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.88a8.28 8.28 0 004.76 1.5V6.93a4.85 4.85 0 01-1-.24z" />
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
+              </a>
+              <a href="mailto:Sales@arleesrawblends.com" className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Email">
+                <Mail size={20} />
               </a>
             </div>
             <h4 className="font-heading text-lg font-semibold mb-3">Order Online</h4>
@@ -96,7 +102,7 @@ const Footer = () => {
               <p>100% Organic · Vegan · Raw</p>
               <p className="text-xs">Delivery available via DoorDash</p>
               <a
-                href="https://order.toasttab.com/online/arlees-raw-blends"
+                href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-3 text-primary font-semibold hover:underline"
