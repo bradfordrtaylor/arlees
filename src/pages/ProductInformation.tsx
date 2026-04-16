@@ -63,7 +63,7 @@ const ProductInformation = () => {
         {/* Order CTA */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">Ready to try it for yourself?</p>
-          <a href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st" target="_blank" rel="noopener noreferrer">
+          <a href="https://order.toasttab.com/online/arlees-raw-blends-trenton" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
               Order Now
             </Button>

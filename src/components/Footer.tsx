@@ -1,21 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-
-  const handleNewsletter = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      toast.success("Thanks for joining the Arlee's community! Check your email for 10% off your first order.");
-      setEmail("");
-    }
-  };
-
   return (
     <footer className="bg-secondary text-secondary-foreground">
       {/* Newsletter Section */}
@@ -25,19 +12,16 @@ const Footer = () => {
           <p className="text-secondary-foreground/70 text-sm mb-6">
             Join the <span className="font-brand">Arlee's</span> community and receive 10% off your first order. Get exclusive promos, wellness tips, and what's fresh.
           </p>
-          <form onSubmit={handleNewsletter} className="flex max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="rounded-r-none bg-background text-foreground"
-            />
-            <Button type="submit" className="rounded-l-none bg-foreground text-background hover:bg-foreground/90 font-semibold">
+          <a
+            href="https://www.toasttab.com/arlees-raw-blends-trenton/marketing-signup"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <Button className="bg-foreground text-background hover:bg-foreground/90 font-semibold px-8">
               SIGN ME UP
             </Button>
-          </form>
+          </a>
         </div>
       </div>
 
@@ -57,7 +41,7 @@ const Footer = () => {
               <Link to="/about" className="block hover:text-primary transition-colors">About</Link>
               <Link to="/product-information" className="block hover:text-primary transition-colors">Product Information</Link>
               <Link to="/cleanses" className="block hover:text-primary transition-colors">Cleanses</Link>
-              <Link to="/gift-cards" className="block hover:text-primary transition-colors">Gift Cards</Link>
+              <a href="https://order.toasttab.com/egiftcards/arlees-raw-blends-trenton" target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition-colors">Gift Cards</a>
               <Link to="/faq" className="block hover:text-primary transition-colors">FAQ</Link>
               <Link to="/find-us" className="block hover:text-primary transition-colors">Find Us</Link>
               <Link to="/blog" className="block hover:text-primary transition-colors">Blog</Link>
@@ -103,7 +87,7 @@ const Footer = () => {
               <p>100% Organic · Vegan · Raw</p>
               <p className="text-xs">Delivery available via DoorDash</p>
               <a
-                href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
+                href="https://order.toasttab.com/online/arlees-raw-blends-trenton"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-3 text-primary font-semibold hover:underline"

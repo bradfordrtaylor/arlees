@@ -4,7 +4,14 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/arlees-logo.png";
 
-const mainLinks = [
+type NavLink = {
+  label: string;
+  path: string;
+  external?: boolean;
+  dropdown?: { label: string; path: string }[];
+};
+
+const mainLinks: NavLink[] = [
   { label: "Home", path: "/" },
   { label: "Product Information", path: "/product-information" },
   {
@@ -18,7 +25,7 @@ const mainLinks = [
     ],
   },
   { label: "Cleanses", path: "/cleanses" },
-  { label: "Gift Cards", path: "/gift-cards" },
+  { label: "Gift Cards", path: "https://order.toasttab.com/egiftcards/arlees-raw-blends-trenton", external: true },
   { label: "Catering", path: "/catering" },
 ];
 
@@ -70,6 +77,16 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+            ) : link.external ? (
+              <a
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary text-muted-foreground"
+              >
+                {link.label}
+              </a>
             ) : (
               <Link
                 key={link.path}
@@ -85,7 +102,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
+            href="https://order.toasttab.com/online/arlees-raw-blends-trenton"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -139,6 +156,17 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+            ) : link.external ? (
+              <a
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="block px-3 py-2 rounded-md text-sm font-medium text-muted-foreground"
+              >
+                {link.label}
+              </a>
             ) : (
               <Link
                 key={link.path}
@@ -155,7 +183,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
+            href="https://order.toasttab.com/online/arlees-raw-blends-trenton"
             target="_blank"
             rel="noopener noreferrer"
             className="block"
