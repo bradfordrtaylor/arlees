@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import bottlesShelfImg from "@/assets/bottles-shelf.jpg";
-import foodSpreadImg from "@/assets/food-spread.jpg";
-import cheesecakesImg from "@/assets/cheesecakes.jpg";
-import saladImg from "@/assets/salad-real.jpg";
+import bottlesShelfImg from "@/assets/bottles-shelf-vibrant.jpg";
+import foodSpreadImg from "@/assets/food-spread-vibrant.jpg";
+import cheesecakesImg from "@/assets/cheesecakes-enhanced.jpg";
+import saladImg from "@/assets/salad-vibrant.jpg";
 
 const categories = [
   {
@@ -57,7 +57,7 @@ const ProductInformation = () => {
         {/* Order CTA */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">Ready to try it for yourself?</p>
-          <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+          <a href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
               Order Now
             </Button>

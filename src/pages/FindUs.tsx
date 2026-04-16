@@ -1,20 +1,15 @@
 import Layout from "@/components/Layout";
 import { MapPin, Clock, Phone, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import storefrontDay from "@/assets/storefront-day.jpg";
+import storefrontDay from "@/assets/storefront-enhanced.jpg";
 import storefrontNight from "@/assets/storefront-night.jpg";
 
 const FindUs = () => {
   return (
     <Layout>
-      {/* Storefront Hero */}
-      <section className="relative h-[40vh] min-h-[280px] flex items-center justify-center overflow-hidden">
-        <img src={storefrontDay} alt="Arlee's Raw Blends storefront" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-foreground/50" />
-        <h1 className="relative z-10 font-heading text-4xl md:text-5xl font-bold text-background">Find Us</h1>
-      </section>
-
       <section className="section-padding max-w-5xl mx-auto">
+        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-10 text-center">Find Us</h1>
+
         <div className="grid md:grid-cols-2 gap-10">
           <div className="space-y-8">
             <div className="flex gap-4">

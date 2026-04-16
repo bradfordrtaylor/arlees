@@ -1,10 +1,15 @@
 import Layout from "@/components/Layout";
-import cleanseImg from "@/assets/cleanse-bottles-real.jpg";
+import cleanseImg from "@/assets/cleanse-bottles-enhanced.jpg";
+import relieveImg from "@/assets/relieve-cleanse-ai.jpg";
+import releaseImg from "@/assets/release-cleanse-ai.jpg";
+import refineImg from "@/assets/refine-cleanse-ai.jpg";
 import { Button } from "@/components/ui/button";
 
-const blends = {
-  relieve: {
+const blends = [
+  {
+    key: "relieve",
     title: "Relieve",
+    image: relieveImg,
     description: "For the person with little to no cleansing experience. Designed to be easy on your system so you can come back stronger!",
     juices: [
       { name: "Kale Blend #2", ingredients: "Kale, Cucumber, Celery, Apple, Lemon, Ginger" },
@@ -15,8 +20,10 @@ const blends = {
       { name: "Almond Blend", ingredients: "Sprouted Almonds, Distilled Water, Cinnamon, Vanilla, Dates" },
     ],
   },
-  release: {
+  {
+    key: "release",
     title: "Release",
+    image: releaseImg,
     description: "For the individual who eats whole foods and works out regularly. A deeper cleanse for those not quite ready for Refine.",
     juices: [
       { name: "Kale Blend #2", ingredients: "Kale, Cucumber, Celery, Apple, Lemon, Ginger" },
@@ -27,8 +34,10 @@ const blends = {
       { name: "Almond Blend", ingredients: "Sprouted Almonds, Distilled Water, Cinnamon, Vanilla, Dates" },
     ],
   },
-  refine: {
+  {
+    key: "refine",
     title: "Refine",
+    image: refineImg,
     description: "The most vegetable-based cleanse. For those who love detox and want the most optimal results. Not for the lighthearted!",
     juices: [
       { name: "Kale Blend #3", ingredients: "Kale, Cucumber, Parsley, Mint, Lemon, Ginger" },
@@ -39,7 +48,7 @@ const blends = {
       { name: "Almond Blend", ingredients: "Sprouted Almonds, Distilled Water, Cinnamon, Vanilla, Dates" },
     ],
   },
-};
+];
 
 const Cleanses = () => {
   return (
@@ -54,9 +63,13 @@ const Cleanses = () => {
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto section-padding space-y-16">
-        {Object.values(blends).map((cleanse) => (
-          <div key={cleanse.title}>
+      <div className="max-w-5xl mx-auto section-padding space-y-20">
+        {blends.map((cleanse) => (
+          <div key={cleanse.key}>
+            {/* Cleanse hero image */}
+            <div className="rounded-xl overflow-hidden shadow-lg mb-8">
+              <img src={cleanse.image} alt={`${cleanse.title} cleanse bottles`} className="w-full h-64 md:h-80 object-cover" loading="lazy" />
+            </div>
             <h2 className="font-heading text-3xl font-bold text-primary mb-3">{cleanse.title}</h2>
             <p className="text-muted-foreground mb-6 max-w-2xl">{cleanse.description}</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -77,7 +90,7 @@ const Cleanses = () => {
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
             Want to customize your cleanse? Build your own from any of the <span className="font-brand font-semibold text-foreground">Arlee's Raw Blends</span> juices currently in stock. Mix and match your favorite blends to create a cleanse that's perfect for you.
           </p>
-          <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+          <a href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
               Order Your Custom Cleanse
             </Button>
