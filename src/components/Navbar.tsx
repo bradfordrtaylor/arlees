@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
+      <div className="w-full px-4 md:px-6 flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="shrink-0">
           <img src={logo} alt="Arlee's Raw Blends" className="h-12 md:h-14 w-auto" />
         </Link>
