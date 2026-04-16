@@ -1,9 +1,8 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import bottlesShelfImg from "@/assets/bottles-shelf-vibrant.jpg";
-import foodSpreadImg from "@/assets/food-spread-vibrant.jpg";
-import cheesecakesImg from "@/assets/cheesecakes-enhanced.jpg";
-import saladImg from "@/assets/salad-vibrant.jpg";
+import productJuicesImg from "@/assets/product-juices.jpg";
+import productRawfoodImg from "@/assets/product-rawfood.jpg";
+import productDessertsImg from "@/assets/product-desserts.jpg";
 
 const categories = [
   {
