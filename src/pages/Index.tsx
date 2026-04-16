@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import heroImg from "@/assets/hero-juices.jpg";
-import rawFoodImg from "@/assets/raw-food.jpg";
-import cleanseImg from "@/assets/cleanse-bottles.jpg";
-import dessertsImg from "@/assets/desserts.jpg";
-import collardWrapImg from "@/assets/collard-wrap.jpg";
+import heroImg from "@/assets/hero-bottles.jpg";
+import foodSpreadImg from "@/assets/food-spread.jpg";
+import cleanseImg from "@/assets/cleanse-bottles-real.jpg";
+import cheesecakesImg from "@/assets/cheesecakes.jpg";
+import bottlesShelfImg from "@/assets/bottles-shelf.jpg";
+import saladImg from "@/assets/salad-real.jpg";
 
 const Index = () => {
   return (
     <Layout>
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <img src={heroImg} alt="Fresh organic cold pressed juices in square bottles" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
+        <img src={heroImg} alt="Arlee's Raw Blends cold pressed juice bottles" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80" />
         <div className="relative z-10 text-center px-6 max-w-3xl animate-fade-in">
           <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Trenton, NJ</p>
@@ -33,7 +34,7 @@ const Index = () => {
               </Button>
             </a>
             <Link to="/cleanses">
-              <Button size="lg" className="bg-background text-foreground hover:bg-background/90 font-semibold">
+              <Button size="lg" variant="outline" className="border-2 border-background text-background hover:bg-background hover:text-foreground font-semibold">
                 Explore Cleanses
               </Button>
             </Link>
@@ -62,28 +63,32 @@ const Index = () => {
               Our proprietary blends are carefully crafted to taste amazing and support your well-being, so you get pure, worry-free goodness in every bottle.
             </p>
           </div>
-          <img src={cleanseImg} alt="Cold pressed juice bottles" className="rounded-lg shadow-lg" width={1200} height={800} loading="lazy" />
+          <img src={bottlesShelfImg} alt="Arlee's cold pressed juices on display" className="rounded-lg shadow-lg" width={1200} height={800} loading="lazy" />
         </div>
       </section>
 
       {/* Cleanses Preview */}
-      <section className="section-padding max-w-5xl mx-auto text-center">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Our Cleanses</h2>
-        <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-          Looking for a fun, tasty way to reset and recharge? Choose from gentle RELIEVE, balanced RELEASE, or the veggie-powered REFINE for a deeper detox. Each cleanse delivers real health benefits—more energy, better digestion, and a fresh start.
-        </p>
-        <Link to="/cleanses">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
-            Learn More About Cleanses
-          </Button>
-        </Link>
+      <section className="section-padding max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <img src={cleanseImg} alt="Arlee's cleanse juice bottles" className="rounded-lg shadow-lg order-2 md:order-1" width={1200} height={800} loading="lazy" />
+          <div className="order-1 md:order-2">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Our Cleanses</h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Looking for a fun, tasty way to reset and recharge? Choose from gentle RELIEVE, balanced RELEASE, or the veggie-powered REFINE for a deeper detox. Each cleanse delivers real health benefits—more energy, better digestion, and a fresh start.
+            </p>
+            <Link to="/cleanses">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
+                Learn More About Cleanses
+              </Button>
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Raw Foods */}
       <section className="section-padding bg-muted">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <img src={collardWrapImg} alt="Raw vegan collard green wraps" className="rounded-lg shadow-lg order-2 md:order-1" width={1200} height={800} loading="lazy" />
-          <div className="order-1 md:order-2">
+          <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">100% Organic Raw Foods</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               From vibrant salads and collard green wraps to raw vegan pizza and crunchy snacks, everything is made without gluten, GMOs, preservatives or refined sugars. Our wraps are made exclusively with fresh collard greens—never bread or tortillas.
@@ -92,19 +97,20 @@ const Index = () => {
               Enjoy pure, delicious flavors and real health benefits in every bite.
             </p>
           </div>
+          <img src={foodSpreadImg} alt="Arlee's raw vegan food spread - pizza, wraps, salad, juices" className="rounded-lg shadow-lg" width={1200} height={800} loading="lazy" />
         </div>
       </section>
 
       {/* Desserts */}
       <section className="section-padding max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <img src={cheesecakesImg} alt="Arlee's raw vegan cheesecakes and mini desserts" className="rounded-lg shadow-lg order-2 md:order-1" width={1200} height={800} loading="lazy" />
+          <div className="order-1 md:order-2">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Vegan Desserts</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Made with 100% organic, raw ingredients and free from gluten, GMOs, and refined sugars. Enjoy creamy cashew cheesecake slices, rich chocolate mousse with brownie, tangy key lime pie squares, decadent almond butter cups, and more—guilt-free indulgence that tastes amazing.
             </p>
           </div>
-          <img src={dessertsImg} alt="Raw vegan desserts - cheesecake, chocolate mousse, key lime squares" className="rounded-lg shadow-lg" width={1200} height={800} loading="lazy" />
         </div>
       </section>
 

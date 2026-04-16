@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/arlees-logo.png";
 
 const mainLinks = [
   { label: "Home", path: "/" },
@@ -28,8 +29,8 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="text-2xl md:text-3xl font-bold text-primary font-brand">
-          Arlee's Raw Blends
+        <Link to="/" className="shrink-0">
+          <img src={logo} alt="Arlee's Raw Blends" className="h-12 md:h-14 w-auto" />
         </Link>
 
         {/* Desktop nav */}

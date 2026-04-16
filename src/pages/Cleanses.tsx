@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import cleanseImg from "@/assets/cleanse-bottles.jpg";
+import cleanseImg from "@/assets/cleanse-bottles-real.jpg";
 import { Button } from "@/components/ui/button";
 
 const blends = {
@@ -46,7 +46,7 @@ const Cleanses = () => {
     <Layout>
       {/* Hero */}
       <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden">
-        <img src={cleanseImg} alt="Cleanse juices" className="absolute inset-0 w-full h-full object-cover" width={1200} height={800} />
+        <img src={cleanseImg} alt="Arlee's cleanse juice bottles" className="absolute inset-0 w-full h-full object-cover" width={1200} height={800} />
         <div className="absolute inset-0 bg-foreground/60" />
         <div className="relative z-10 text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-background">Our Cleanses</h1>
