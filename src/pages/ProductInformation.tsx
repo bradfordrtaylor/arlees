@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import productJuicesImg from "@/assets/product-juices.jpg";
+import productShotsImg from "@/assets/product-shots.jpg";
 import productRawfoodImg from "@/assets/product-rawfood.jpg";
 import productDessertsImg from "@/assets/product-desserts.jpg";
 
@@ -10,6 +11,12 @@ const categories = [
     image: productJuicesImg,
     description: "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold-press process. No heat, no oxidation — just pure, nutrient-dense juice packed with enzymes and vibrant flavor. Served in our signature 16 oz square bottles.",
     items: ["Kale Blends", "Beet Blend", "Pineapple Blend", "Lemon Blend", "Lime Blend", "Almond Blend"],
+  },
+  {
+    title: "Wellness Shots",
+    image: productShotsImg,
+    description: "Small but mighty 2 oz shots packed with powerful, functional ingredients. Our Immunity Booster blends turmeric, lemon, ginger, and cayenne into a single concentrated dose to kickstart your day, support your immune system, and fight inflammation. 100% raw, organic, and vegan — just the good stuff, nothing else.",
+    items: ["Immunity Booster", "Turmeric · Lemon · Ginger · Cayenne", "2 oz / 59 ml"],
   },
   {
     title: "Raw Vegan Foods",
