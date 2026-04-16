@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import heroImg from "@/assets/hero-bottles.jpg";
 import foodSpreadImg from "@/assets/food-spread.jpg";
-import cleanseImg from "@/assets/cleanse-bottles-real.jpg";
-import cheesecakesImg from "@/assets/cheesecakes.jpg";
-import bottlesShelfImg from "@/assets/bottles-shelf.jpg";
+import cleanseImg from "@/assets/cleanse-bottles-enhanced.jpg";
+import cheesecakesImg from "@/assets/cheesecakes-enhanced.jpg";
+import bottlesShelfImg from "@/assets/bottles-shelf-enhanced.jpg";
 import saladImg from "@/assets/salad-real.jpg";
 
 const Index = () => {
@@ -28,13 +28,13 @@ const Index = () => {
             Always Fresh · Healthy · 100% Organic · Vegan · Raw · Gluten & GMO Free
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+            <a href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base px-8">
                 Order Now
               </Button>
             </a>
             <Link to="/cleanses">
-              <Button size="lg" variant="outline" className="border-2 border-background text-background hover:bg-background hover:text-foreground font-semibold">
+              <Button size="lg" className="bg-background text-foreground hover:bg-background/90 font-semibold border-0">
                 Explore Cleanses
               </Button>
             </Link>
@@ -120,7 +120,7 @@ const Index = () => {
         <p className="text-secondary-foreground/70 mb-4 max-w-xl mx-auto">
           Order fresh juices, raw foods, and vegan desserts online for pickup or delivery via DoorDash.
         </p>
-        <a href="https://order.toasttab.com/online/arlees-raw-blends" target="_blank" rel="noopener noreferrer">
+        <a href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st" target="_blank" rel="noopener noreferrer">
           <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg px-10">
             Order Now
           </Button>

@@ -12,6 +12,7 @@ const mainLinks = [
     path: "/about",
     dropdown: [
       { label: "Our Story", path: "/about" },
+      { label: "Find Us", path: "/find-us" },
       { label: "FAQ", path: "/faq" },
       { label: "Blog", path: "/blog" },
     ],
@@ -45,7 +46,7 @@ const Navbar = () => {
               >
                 <button
                   className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary inline-flex items-center gap-1 ${
-                    ["/about", "/faq", "/blog"].includes(location.pathname)
+                    ["/about", "/faq", "/blog", "/find-us"].includes(location.pathname)
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground"
                   }`}
@@ -84,7 +85,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://order.toasttab.com/online/arlees-raw-blends"
+            href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -113,7 +114,7 @@ const Navbar = () => {
                 <button
                   onClick={() => setAboutOpen(!aboutOpen)}
                   className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-sm font-medium ${
-                    ["/about", "/faq", "/blog"].includes(location.pathname)
+                    ["/about", "/faq", "/blog", "/find-us"].includes(location.pathname)
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground"
                   }`}
@@ -154,7 +155,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://order.toasttab.com/online/arlees-raw-blends"
+            href="https://order.toasttab.com/online/arlee-s-raw-blends-trenton-246-nassau-st"
             target="_blank"
             rel="noopener noreferrer"
             className="block"
