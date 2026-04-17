@@ -25,7 +25,7 @@ const mainLinks: NavLink[] = [
     ],
   },
   { label: "Cleanses", path: "/cleanses" },
-  { label: "Gift Cards", path: "https://order.toasttab.com/egiftcards/arlees-raw-blends-trenton", external: true },
+  { label: "Gift Cards", path: "/gift-cards" },
   { label: "Catering", path: "/catering" },
 ];
 
