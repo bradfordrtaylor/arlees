@@ -41,7 +41,7 @@ const Footer = () => {
               <Link to="/about" className="block hover:text-primary transition-colors">About</Link>
               <Link to="/product-information" className="block hover:text-primary transition-colors">Product Information</Link>
               <Link to="/cleanses" className="block hover:text-primary transition-colors">Cleanses</Link>
-              <a href="https://order.toasttab.com/egiftcards/arlees-raw-blends-trenton" target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition-colors">Gift Cards</a>
+              <Link to="/gift-cards" className="block hover:text-primary transition-colors">Gift Cards</Link>
               <Link to="/faq" className="block hover:text-primary transition-colors">FAQ</Link>
               <Link to="/find-us" className="block hover:text-primary transition-colors">Find Us</Link>
               <Link to="/blog" className="block hover:text-primary transition-colors">Blog</Link>
