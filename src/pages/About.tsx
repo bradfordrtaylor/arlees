@@ -62,7 +62,7 @@ const About = () => {
             We had the unique opportunity to experience the journey to the Rio Olympic Games in 2016 alongside the Crew team. For years leading up to the Olympics, co-founder Paula Taylor was a homestay for two rowers, who would regularly eat and drink up everything in sight (as you can imagine).
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Eventually, <span className="font-brand">Arlee's Raw Blends</span> spread to the rest of the team, with some athletes even electing to work at <span className="font-brand">Arlee's</span> while they were stationed in the area! Grant James, Seth Weil, Henrik Rummel, and Michael Gennaro compete in the men's four at the 2013 World Rowing Championships.
+            Eventually, <span className="font-brand">Arlee's Raw Blends</span> spread to the rest of the team, with some athletes even electing to work at <span className="font-brand">Arlee's</span> while they were stationed in the area. Grant James, Seth Weil, Henrik Rummel, and Michael Gennaro all competed in the Men's Four event at the 2016 Olympics.
           </p>
         </div>
 
