@@ -47,14 +47,7 @@ const ProductInformation = () => {
               <img src={cat.image} alt={cat.title} className="rounded-lg shadow-lg md:[direction:ltr]" width={1200} height={800} loading="lazy" />
               <div className="md:[direction:ltr]">
                 <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">{cat.title}</h2>
-                <p className="text-muted-foreground leading-relaxed mb-4">{cat.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {cat.items.map((item) => (
-                    <span key={item} className="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-muted-foreground leading-relaxed">{cat.description}</p>
               </div>
             </div>
           ))}
