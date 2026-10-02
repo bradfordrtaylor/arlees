@@ -58,7 +58,7 @@ const Footer = () => {
                 <a href="tel:609-880-1101" className="hover:text-primary transition-colors">609-880-1101</a>
               </p>
               <div className="mt-2 text-xs">
-                <p>Monday: Closed</p>
+                <p>Monday: 8:00 AM – 3:00 PM</p>
                 <p>Tuesday–Friday: 8:00 AM – 5:00 PM</p>
                 <p>Saturday: 9:00 AM – 3:00 PM</p>
                 <p>Sunday: Closed</p>

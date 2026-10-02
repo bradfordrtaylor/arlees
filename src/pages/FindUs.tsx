@@ -36,7 +36,7 @@ const FindUs = () => {
               <div>
                 <h3 className="font-heading text-lg font-semibold mb-1">Hours</h3>
                 <div className="text-muted-foreground text-sm space-y-1">
-                  <p>Monday: Closed</p>
+                  <p>Monday: 8:00 AM – 3:00 PM</p>
                   <p>Tuesday – Friday: 8:00 AM – 5:00 PM</p>
                   <p>Saturday: 9:00 AM – 3:00 PM</p>
                   <p>Sunday: Closed</p>
