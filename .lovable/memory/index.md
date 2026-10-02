@@ -9,3 +9,4 @@ Toast POS ordering: https://order.toasttab.com/online/arlee-s-raw-blends-trenton
 - [Brand & design](mem://design/brand) — Color palette, typography, brand voice
 - [Toast integration](mem://features/toast) — Online ordering via Toast POS link
 - [Social links](mem://features/socials) — FB, IG, X, email for Arlee's
+- [Business hours](mem://features/business-hours) — Monday closed; Tue–Fri 8–5; Sat 9–3; Sunday closed
