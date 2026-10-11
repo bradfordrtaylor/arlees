@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkjozppv";
+
 const Careers = () => {
   const [form, setForm] = useState({
     name: "",
@@ -15,11 +17,41 @@ const Careers = () => {
     availability: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Application submitted! We'll be in touch soon.");
-    setForm({ name: "", email: "", phone: "", position: "", availability: "", message: "" });
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Arlee's Careers Application: ${form.name}`,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          position: form.position,
+          availability: form.availability,
+          message: form.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Application submitted! We'll be in touch soon.");
+        setForm({ name: "", email: "", phone: "", position: "", availability: "", message: "" });
+      } else {
+        toast.error("Something went wrong. Please try again or email us directly.");
+      }
+    } catch (error) {
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -72,8 +104,8 @@ const Careers = () => {
           </div>
 
           <div className="text-center">
-            <Button type="submit" size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-10">
-              Submit Application
+            <Button type="submit" size="lg" disabled={submitting} className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-10">
+              {submitting ? "Submitting..." : "Submit Application"}
             </Button>
           </div>
         </form>

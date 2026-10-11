@@ -6,19 +6,45 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import cateringImg from "@/assets/catering.jpg";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xwlvqwww";
+
 const Catering = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", guests: "", details: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // For now, show success message. Backend form submission can be added later.
-    setTimeout(() => {
-      toast.success("Thank you! We'll be in touch about your catering request.");
-      setForm({ name: "", email: "", phone: "", date: "", guests: "", details: "" });
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Arlee's Catering Inquiry: ${form.name}`,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          event_date: form.date,
+          estimated_guests: form.guests,
+          details: form.details,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Thank you! We'll be in touch about your catering request.");
+        setForm({ name: "", email: "", phone: "", date: "", guests: "", details: "" });
+      } else {
+        toast.error("Something went wrong. Please try again or email us directly.");
+      }
+    } catch (error) {
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
       setSubmitting(false);
-    }, 800);
+    }
   };
 
   return (
