@@ -4,10 +4,12 @@
 // never drifts from Toast; the Order button sends people to Toast for current pricing.
 
 import productJuicesImg from "@/assets/product-juices.jpg";
-import productDessertsImg from "@/assets/product-desserts.jpg";
+import dessertsImg from "@/assets/desserts.jpg";
 import cleanseImg from "@/assets/cleanse-bottles-enhanced.jpg";
 import foodSpreadImg from "@/assets/food-spread-vibrant.jpg";
-import juiceColorfulImg from "@/assets/juice-colorful.jpg";
+import heroJuicesImg from "@/assets/hero-juices.jpg";
+import cateringImg from "@/assets/catering.jpg";
+import rawFoodImg from "@/assets/raw-food.jpg";
 
 export type Product = {
   name: string;
@@ -360,8 +362,7 @@ export const categories: Category[] = [
     title: "Smoothies",
     tagline: "Fruit, green, and protein smoothies, blended to order",
     description: "16 oz smoothies made with 100% organic produce and our house nut mylks, blended fresh when you order.",
-    image: juiceColorfulImg,
-    heroArt: { vessel: "cup", colors: ["#d4639a", "#f2cf4a", "#3aa0d8", "#4f8a2b", "#8e1f3a", "#7a5236", "#ee8a2a"] },
+    image: heroJuicesImg,
     sections: smoothies,
   },
   {
@@ -369,8 +370,7 @@ export const categories: Category[] = [
     title: "Bowls & Breakfast",
     tagline: "Acai, chia, green, mango, and oatmeal bowls",
     description: "Blended fruit bowls, oatmeal bowls, and grab-and-go breakfast. 100% organic, vegan, gluten-free, and GMO-free.",
-    image: foodSpreadImg,
-    heroArt: { vessel: "bowl", colors: ["#5a1f45", "#f2b51f", "#4f8a2b", "#c98aa8", "#e8c98a"] },
+    image: cateringImg,
     sections: bowls,
   },
   {
@@ -378,7 +378,7 @@ export const categories: Category[] = [
     title: "Raw Foods",
     tagline: "Raw vegan pizza, salads, burrito bowls, and more",
     description: "Raw vegan meals made with 100% organic ingredients. Gluten-free, GMO-free, and never cooked.",
-    image: foodSpreadImg,
+    image: rawFoodImg,
     sections: rawFoods,
   },
   {
@@ -387,7 +387,6 @@ export const categories: Category[] = [
     tagline: "Cashew cream cheeses, guacamole, pesto, and pico",
     description: "House-made dips and spreads made with 100% organic ingredients.",
     image: foodSpreadImg,
-    heroArt: { vessel: "tub", colors: ["#efe9da", "#c9874f", "#d2552f", "#8fb84a", "#d8463a"] },
     sections: dips,
   },
   {
@@ -395,7 +394,7 @@ export const categories: Category[] = [
     title: "Desserts",
     tagline: "Cashew cheesecakes, truffles, brownies, and mousse",
     description: "Raw vegan desserts made with 100% organic ingredients. Gluten-free, GMO-free, and no refined sugar.",
-    image: productDessertsImg,
+    image: dessertsImg,
     sections: desserts,
   },
 ];
