@@ -19,6 +19,10 @@ export type Product = {
   size?: string;
   seasonal?: boolean;
   note?: string;
+  /** Short description, used when a full ingredient list isn't published. */
+  description?: string;
+  /** Drawn as a bottle (juices) or a cup (smoothies). */
+  vessel?: "bottle" | "cup";
 };
 
 export type ProductSection = {
@@ -56,10 +60,15 @@ const juices: ProductSection[] = [
   {
     id: "root-blends",
     title: "Root Blends",
-    blurb: "Earthy, grounding blends built on beets and roots.",
+    blurb: "Earthy blends built on beets, carrots, turmeric, and ginger.",
     products: [
       { name: "Beet Blend", ingredients: "Beet, Apple, Carrot, Lemon, Ginger", color: "#9e1f3c", size: "16 oz" },
-      { name: "Beet Refresher", ingredients: "Beet, Apple, Lemon", color: "#b5243f", size: "16 oz" },
+      { name: "Beet Blend #2", ingredients: "Beet, Cucumber, Lemon, Ginger", color: "#7d1a3a", size: "16 oz" },
+      { name: "Beet Bliss", ingredients: "Beet, Apple, Lemon, Carrot, Ginger, Turmeric", color: "#b5243f", size: "16 oz" },
+      { name: "Carrot Blend", ingredients: "Carrot, Celery, Apple, Lemon", color: "#ec7a1f", size: "16 oz" },
+      { name: "Turmeric Blend #2", ingredients: "Turmeric, Lemon, Ginger, Cayenne, Distilled Water", color: "#f2c21b", size: "16 oz" },
+      { name: "Pure Cold Pressed Ginger", ingredients: "100% ginger, no HPP", color: "#e9cf8f", size: "8 oz" },
+      { name: "Pure Cold Pressed Turmeric", ingredients: "100% turmeric root, no HPP", color: "#e89a1c", size: "8 oz" },
     ],
   },
   {
@@ -77,7 +86,7 @@ const juices: ProductSection[] = [
       { name: "Sorrel Blend", ingredients: "Hibiscus, Apple, Lemon, Spices", color: "#8f1b2e", size: "16 oz" },
       { name: "Citrus Blend", ingredients: "Grapefruit, Orange, Lemon, Cayenne", color: "#f0a030", size: "16 oz", seasonal: true },
       { name: "Watermelon Blend", ingredients: "Watermelon, Lime, Mint", color: "#e3485c", size: "16 oz", seasonal: true },
-      { name: "Strawberry Lemonade", color: "#ef7486", size: "16 oz", seasonal: true },
+      { name: "Strawberry Lemonade", ingredients: "Strawberries, Apple, Lemon", color: "#ef7486", size: "16 oz", seasonal: true },
       { name: "Pure Lemon Juice", ingredients: "Cold pressed lemon", color: "#f5e88f", size: "8 oz" },
       { name: "Pure Lime Juice", ingredients: "Cold pressed lime", color: "#d6e39a", size: "8 oz" },
     ],
@@ -104,10 +113,10 @@ const juices: ProductSection[] = [
     blurb: "Small, concentrated shots for an everyday boost.",
     products: [
       { name: "Immunity Booster", ingredients: "Turmeric, Lemon, Ginger, Cayenne", color: "#e3a020", size: "2 oz" },
-      { name: "Ginger Shot", ingredients: "Ginger", color: "#e6c66a", size: "2 oz" },
+      { name: "Ginger Shot", ingredients: "Pure cold pressed Peruvian ginger root", color: "#e6c66a", size: "2 oz" },
       { name: "Elderberry Shot", ingredients: "Elderberry Syrup, Lemon", color: "#4a1a3a", size: "2 oz" },
       { name: "Fire Cider", color: "#c4632a", size: "2 oz" },
-      { name: "Turmeric Shot", color: "#e5a51b", size: "2 oz", seasonal: true },
+      { name: "Turmeric Shot", ingredients: "Pure cold pressed turmeric root", color: "#e5a51b", size: "2 oz", seasonal: true },
       { name: "Wheatgrass Shot", ingredients: "Wheatgrass", color: "#4e8a2e", size: "2 oz", seasonal: true },
     ],
   },
@@ -118,6 +127,71 @@ const juices: ProductSection[] = [
     products: [
       { name: "Cold Brew Hibiscus Tea", ingredients: "Hibiscus, Lemon, Distilled Water", color: "#b0254a", size: "16 oz" },
       { name: "Cold Brew Rooibos", ingredients: "Rooibos", color: "#b5562a", size: "16 oz", seasonal: true },
+    ],
+  },
+];
+
+
+const S = (name: string, color: string, extra: Partial<Product> = {}): Product => ({
+  name,
+  color,
+  size: "16 oz",
+  vessel: "cup",
+  ...extra,
+});
+
+const smoothies: ProductSection[] = [
+  {
+    id: "fruit-smoothies",
+    title: "Fruit & Tropical",
+    blurb: "Bright, fruit-forward blends.",
+    products: [
+      S("Berry Coconut Glow", "#d4639a", { description: "A bright, tropical blend of pineapple, mango, mixed berries, and banana." }),
+      S("Coco Loco", "#f2d27a", { description: "A creamy tropical smoothie made with mango, dates, and banana." }),
+      S("Blue Spirulina", "#3aa0d8", { ingredients: "Pineapple, Apple, Lime, Banana, Blue Spirulina", description: "Blended with your choice of base." }),
+      S("Tiffany & Co", "#4fb6dd", { ingredients: "Pineapple, Apple, Lime, Banana, Blue Spirulina", description: "Blended with your choice of coconut water or mylk." }),
+      S("Tiffany Lemonade", "#5fd0d0", { ingredients: "Lemon, Apple, Blue Spirulina" }),
+      S("Sweet Dream", "#c2306f", { note: "Super Protein", description: "A protein-packed blend of mixed berries and pineapple." }),
+    ],
+  },
+  {
+    id: "green-smoothies",
+    title: "Green",
+    blurb: "Leafy greens blended smooth.",
+    products: [
+      S("Tropical Green", "#7fa63a", { ingredients: "Apple, Broccoli, Lemon, Pineapple, Turmeric, Ginger, Banana, Hemp Seeds" }),
+      S("Greens With Envy", "#2f7a2f", { description: "Kale, banana, green spirulina, and hemp seeds." }),
+      S("Green Goddess", "#4f8a2b", { description: "A garden-fresh blend with kale and Swiss chard." }),
+      S("Double Spice Smoothie", "#6a9a35", { description: "A bright, zesty green smoothie with apple, lemon, and ginger." }),
+      S("Avocado Smoothie", "#9cbf4a", { description: "Creamy and naturally sweet, made with avocado, banana, and dates." }),
+    ],
+  },
+  {
+    id: "root-smoothies",
+    title: "Beet & Carrot",
+    blurb: "Root vegetables with fruit for natural sweetness.",
+    products: [
+      S("Burgundy Blush", "#8e1f3a", { ingredients: "Beet, Apple, Lemon, Carrot, Ginger, Turmeric, Banana" }),
+      S("Crimson Cleanse", "#b0213f", { description: "A bright, refreshing blend built on beets." }),
+      S("Sweet Carrot Smoothie", "#ee8a2a", { description: "Naturally sweet, blended with carrots." }),
+    ],
+  },
+  {
+    id: "chocolate-protein",
+    title: "Chocolate & Protein",
+    blurb: "Rich, filling smoothies made with raw cacao.",
+    products: [
+      S("C.A.B.", "#7a5236", { ingredients: "Raw Cacao, Banana, Almond Mylk, Hemp Seeds" }),
+      S("Body Builder", "#6b4430", { description: "A rich, chocolatey mocha smoothie made with raw cacao." }),
+      S("Boost Me Up", "#5e3b28", { note: "Protein", description: "A rich, mocha-inspired smoothie made with cold brew." }),
+      S("Cacao Sea Moss", "#6e4a35", { description: "A creamy chocolate smoothie with almonds, dates, and sea moss." }),
+    ],
+  },
+  {
+    id: "build-your-own",
+    title: "Build Your Own",
+    products: [
+      S("Build Your Own", "#ED8D1F", { description: "Pick almond or coconut mylk as your base, then mix in your favorite fruits and greens." }),
     ],
   },
 ];
@@ -151,9 +225,10 @@ export const categories: Category[] = [
   {
     slug: "smoothies",
     title: "Smoothies",
-    tagline: "Blended to order",
-    description: "Thick, fruit-forward smoothies made with organic fruit and our house nut mylks.",
+    tagline: "Fruit, green, and protein smoothies, blended to order",
+    description: "16 oz smoothies made with 100% organic produce and our house nut mylks, blended fresh when you order.",
     image: juiceColorfulImg,
+    sections: smoothies,
   },
   {
     slug: "dips",

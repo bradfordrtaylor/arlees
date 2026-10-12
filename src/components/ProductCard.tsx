@@ -35,6 +35,26 @@ const Bottle = ({ color, small }: { color: string; small?: boolean }) => (
   </svg>
 );
 
+const Cup = ({ color }: { color: string }) => (
+  <svg viewBox="0 0 44 72" className="h-16 w-auto" aria-hidden="true">
+    {/* straw */}
+    <rect x="25" y="0" width="3" height="20" rx="1.5" fill="#1c1c1c" transform="rotate(12 26 10)" />
+    {/* dome lid */}
+    <path d="M5 18 Q22 6 39 18 Z" fill="rgba(0,0,0,0.08)" stroke="rgba(0,0,0,0.25)" strokeWidth="1" />
+    <rect x="3" y="17" width="38" height="4" rx="2" fill="rgba(0,0,0,0.18)" />
+    {/* tapered cup with smoothie */}
+    <path
+      d="M6 22 L38 22 L34 70 L10 70 Z"
+      fill={color}
+      stroke={isLight(color) ? "rgba(0,0,0,0.18)" : "none"}
+      strokeWidth="1"
+    />
+    {/* Arlee's round sticker */}
+    <circle cx="22" cy="44" r="8" fill="#ED8D1F" stroke="#fff" strokeWidth="1.5" />
+    <rect x="9" y="25" width="3" height="40" rx="1.5" fill="rgba(255,255,255,0.35)" transform="rotate(-4 10 45)" />
+  </svg>
+);
+
 const ProductCard = ({ product }: { product: Product }) => {
   const isShot = product.size === "2 oz";
   return (
@@ -43,7 +63,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       style={{ backgroundImage: `linear-gradient(135deg, ${product.color}1f, transparent 60%)` }}
     >
       <div className="flex w-12 shrink-0 justify-center pt-1">
-        <Bottle color={product.color} small={isShot} />
+        {product.vessel === "cup" ? <Cup color={product.color} /> : <Bottle color={product.color} small={isShot} />}
       </div>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
@@ -61,6 +81,11 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
         {product.ingredients && (
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{product.ingredients}</p>
+        )}
+        {product.description && (
+          <p className={`text-sm leading-relaxed text-muted-foreground ${product.ingredients ? "mt-1" : "mt-1.5"}`}>
+            {product.description}
+          </p>
         )}
         {product.size && <p className="mt-2 text-xs font-medium text-muted-foreground/80">{product.size}</p>}
       </div>
