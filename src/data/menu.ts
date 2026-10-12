@@ -279,6 +279,16 @@ const rawFoods: ProductSection[] = [
     ],
   },
   {
+    id: "salads",
+    title: "Salads",
+    blurb: "Organic greens with house-made dressings.",
+    products: [
+      B("Kale Apple Salad", "#4f8a2b", "Kale, Almonds, Raisins, Granny Smith Apples. Dressing: Lemon, Cayenne, Paprika, Dates, Pink Himalayan Salt", { seasonal: true }),
+      B("Peach & Blueberry Glow Kale Salad", "#3f7d2c", "Kale, Peaches, Blueberries, Pumpkin Seeds", { seasonal: true }),
+      B("Taco Salad", "#7fa63a", "Mixed Greens, Walnut Taco \"Meat\"", { seasonal: true }),
+    ],
+  },
+  {
     id: "raw-vegan-pizza",
     title: "Raw Vegan Pizza",
     blurb: "A sprouted kale and almond crust, never baked.",
@@ -366,7 +376,7 @@ export const categories: Category[] = [
   {
     slug: "raw-foods",
     title: "Raw Foods",
-    tagline: "Raw vegan pizza, burrito bowls, and more",
+    tagline: "Raw vegan pizza, salads, burrito bowls, and more",
     description: "Raw vegan meals made with 100% organic ingredients. Gluten-free, GMO-free, and never cooked.",
     image: foodSpreadImg,
     sections: rawFoods,
