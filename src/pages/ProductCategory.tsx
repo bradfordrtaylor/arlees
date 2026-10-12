@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import Layout from "@/components/Layout";
-import ProductCard from "@/components/ProductCard";
+import ProductCard, { Cup } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { categories, categoryHref, TOAST_ORDER_URL } from "@/data/menu";
 
@@ -16,17 +16,44 @@ const ProductCategory = () => {
   return (
     <Layout>
       {/* Hero */}
+      {category.heroCups ? (
+        <section className="relative overflow-hidden bg-secondary">
+          <div
+            className="absolute inset-0 opacity-60"
+            style={{ backgroundImage: "radial-gradient(circle at 20% 20%, hsl(33 90% 50% / 0.35), transparent 45%), radial-gradient(circle at 85% 80%, hsl(33 90% 50% / 0.25), transparent 40%)" }}
+          />
+          <div className="relative z-10 mx-auto flex min-h-[300px] max-w-6xl flex-col items-center justify-center gap-6 px-6 py-12 md:flex-row md:justify-between md:gap-10">
+            <div className="text-center md:text-left">
+              <Link to="/product-information" className="text-xs font-semibold uppercase tracking-widest text-secondary-foreground/70 hover:text-secondary-foreground">
+                Product Information
+              </Link>
+              <h1 className="mt-2 font-heading text-4xl font-bold text-secondary-foreground md:text-5xl">{category.title}</h1>
+              <p className="mt-2 max-w-md text-secondary-foreground/80">{category.tagline}</p>
+            </div>
+            <div className="flex items-end gap-2 md:gap-3">
+              {category.heroCups.map((c, i) => (
+                <Cup
+                  key={c}
+                  color={c}
+                  className={`w-auto drop-shadow-lg ${i % 2 === 0 ? "h-24 md:h-32" : "h-20 md:h-28"} ${i > 4 ? "hidden sm:block" : ""}`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : (
       <section className="relative flex h-[34vh] min-h-[260px] items-center justify-center overflow-hidden">
-        <img src={category.image} alt={category.title} className="absolute inset-0 h-full w-full object-cover" width={1200} height={800} />
-        <div className="absolute inset-0 bg-foreground/60" />
-        <div className="relative z-10 px-6 text-center">
-          <Link to="/product-information" className="text-xs font-semibold uppercase tracking-widest text-background/70 hover:text-background">
-            Product Information
-          </Link>
-          <h1 className="mt-2 font-heading text-4xl font-bold text-background md:text-5xl">{category.title}</h1>
-          <p className="mt-2 text-background/80">{category.tagline}</p>
-        </div>
-      </section>
+          <img src={category.image} alt={category.title} className="absolute inset-0 h-full w-full object-cover" width={1200} height={800} />
+          <div className="absolute inset-0 bg-foreground/60" />
+          <div className="relative z-10 px-6 text-center">
+            <Link to="/product-information" className="text-xs font-semibold uppercase tracking-widest text-background/70 hover:text-background">
+              Product Information
+            </Link>
+            <h1 className="mt-2 font-heading text-4xl font-bold text-background md:text-5xl">{category.title}</h1>
+            <p className="mt-2 text-background/80">{category.tagline}</p>
+          </div>
+        </section>
+      )}
 
       {category.sections ? (
         <>

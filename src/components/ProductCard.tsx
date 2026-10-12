@@ -35,8 +35,8 @@ const Bottle = ({ color, small }: { color: string; small?: boolean }) => (
   </svg>
 );
 
-const Cup = ({ color }: { color: string }) => (
-  <svg viewBox="0 0 44 72" className="h-16 w-auto" aria-hidden="true">
+export const Cup = ({ color, className = "h-16 w-auto" }: { color: string; className?: string }) => (
+  <svg viewBox="0 0 44 72" className={className} aria-hidden="true">
     {/* straw */}
     <rect x="25" y="0" width="3" height="20" rx="1.5" fill="#1c1c1c" transform="rotate(12 26 10)" />
     {/* dome lid */}

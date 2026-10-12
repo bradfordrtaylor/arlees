@@ -38,6 +38,8 @@ export type Category = {
   tagline: string;
   description: string;
   image: string;
+  /** Draw an illustrated row of cups in these colors instead of the photo hero. */
+  heroCups?: string[];
   /** If set, the dropdown and overview link here instead of /product-information/:slug */
   href?: string;
   sections?: ProductSection[];
@@ -52,7 +54,7 @@ const juices: ProductSection[] = [
       { name: "KT Blend", ingredients: "Kale, Turmeric, Ginger, Pineapple, Broccoli, Apple, Lemon", color: "#4f8a2b", size: "16 oz" },
       { name: "Kale Blend #2", ingredients: "Kale, Cucumber, Celery, Apple, Lemon, Ginger", color: "#3f7d2c", size: "16 oz" },
       { name: "Kale Blend #3", ingredients: "Kale, Cucumber, Parsley, Mint, Lemon, Lime, Ginger", color: "#2f6a24", size: "16 oz" },
-      { name: "Super Green Blend", ingredients: "Kale, Chard, Collard Greens, Cucumber, Apple, Herbs", color: "#2e5d22", size: "16 oz" },
+      { name: "Super Green Blend", ingredients: "Kale, Swiss Chard, Collard, Cucumber, Granny Smith Apple, Lemon, Lime, Mint, Parsley, Ginger", color: "#2e5d22", size: "16 oz" },
       { name: "Green Booster", ingredients: "Spinach, Kale, Chard, Cucumber, Lemon, Lime", color: "#3d7a33", size: "16 oz" },
       { name: "Celery Juice", ingredients: "Celery", color: "#a3bf62", size: "16 oz", note: "Special order" },
     ],
@@ -67,8 +69,8 @@ const juices: ProductSection[] = [
       { name: "Beet Bliss", ingredients: "Beet, Apple, Lemon, Carrot, Ginger, Turmeric", color: "#b5243f", size: "16 oz" },
       { name: "Carrot Blend", ingredients: "Carrot, Celery, Apple, Lemon", color: "#ec7a1f", size: "16 oz" },
       { name: "Turmeric Blend #2", ingredients: "Turmeric, Lemon, Ginger, Cayenne, Distilled Water", color: "#f2c21b", size: "16 oz" },
-      { name: "Pure Cold Pressed Ginger", ingredients: "100% ginger, no HPP", color: "#e9cf8f", size: "8 oz" },
-      { name: "Pure Cold Pressed Turmeric", ingredients: "100% turmeric root, no HPP", color: "#e89a1c", size: "8 oz" },
+      { name: "Pure Cold Pressed Ginger", ingredients: "Ginger", color: "#e9cf8f", size: "8 oz" },
+      { name: "Pure Cold Pressed Turmeric", ingredients: "Turmeric", color: "#e89a1c", size: "8 oz" },
     ],
   },
   {
@@ -87,8 +89,8 @@ const juices: ProductSection[] = [
       { name: "Citrus Blend", ingredients: "Grapefruit, Orange, Lemon, Cayenne", color: "#f0a030", size: "16 oz", seasonal: true },
       { name: "Watermelon Blend", ingredients: "Watermelon, Lime, Mint", color: "#e3485c", size: "16 oz", seasonal: true },
       { name: "Strawberry Lemonade", ingredients: "Strawberries, Apple, Lemon", color: "#ef7486", size: "16 oz", seasonal: true },
-      { name: "Pure Lemon Juice", ingredients: "Cold pressed lemon", color: "#f5e88f", size: "8 oz" },
-      { name: "Pure Lime Juice", ingredients: "Cold pressed lime", color: "#d6e39a", size: "8 oz" },
+      { name: "Pure Lemon Juice", ingredients: "Lemon", color: "#f5e88f", size: "8 oz" },
+      { name: "Pure Lime Juice", ingredients: "Lime", color: "#d6e39a", size: "8 oz" },
     ],
   },
   {
@@ -100,11 +102,11 @@ const juices: ProductSection[] = [
       { name: "Avocado Blend", ingredients: "Almonds, Avocado, Kale, Spirulina", color: "#a9b86a", size: "16 oz" },
       { name: "Sea Moss Blend", ingredients: "Almond Mylk, Coconut Mylk, Sea Moss, Spirulina", color: "#b9c79a", size: "16 oz" },
       { name: "Soursop Blend", ingredients: "Soursop, Almonds, Dates, Coconut", color: "#efe8d8", size: "16 oz" },
-      { name: "Raw Cacao Blend", color: "#6b4430", size: "16 oz", seasonal: true },
+      { name: "Raw Cacao Blend", ingredients: "Sprouted Almonds, Raw Cacao, Dates, Cinnamon, Vanilla, Distilled Water", color: "#6b4430", size: "16 oz", seasonal: true },
       { name: "Cafe Mocha Blend", ingredients: "Almonds, Cold Brew Coffee, Cacao, Dates", color: "#7a5236", size: "16 oz" },
       { name: "Cold Brew Latte", ingredients: "Almonds, Cold Brew Coffee, Dates", color: "#b48d66", size: "16 oz" },
-      { name: "Cold Brew Coffee", ingredients: "Cold brewed coffee", color: "#3b2416", size: "16 oz" },
-      { name: "Coconut Water", ingredients: "Coconut water", color: "#f1eee4" },
+      { name: "Cold Brew Coffee", ingredients: "Cold Brew Coffee", color: "#3b2416", size: "16 oz" },
+      { name: "Coconut Water", ingredients: "Coconut Water", color: "#f1eee4" },
     ],
   },
   {
@@ -113,10 +115,10 @@ const juices: ProductSection[] = [
     blurb: "Small, concentrated shots for an everyday boost.",
     products: [
       { name: "Immunity Booster", ingredients: "Turmeric, Lemon, Ginger, Cayenne", color: "#e3a020", size: "2 oz" },
-      { name: "Ginger Shot", ingredients: "Pure cold pressed Peruvian ginger root", color: "#e6c66a", size: "2 oz" },
+      { name: "Ginger Shot", ingredients: "Ginger", color: "#e6c66a", size: "2 oz" },
       { name: "Elderberry Shot", ingredients: "Elderberry Syrup, Lemon", color: "#4a1a3a", size: "2 oz" },
       { name: "Fire Cider", color: "#c4632a", size: "2 oz" },
-      { name: "Turmeric Shot", ingredients: "Pure cold pressed turmeric root", color: "#e5a51b", size: "2 oz", seasonal: true },
+      { name: "Turmeric Shot", ingredients: "Turmeric", color: "#e5a51b", size: "2 oz", seasonal: true },
       { name: "Wheatgrass Shot", ingredients: "Wheatgrass", color: "#4e8a2e", size: "2 oz", seasonal: true },
     ],
   },
@@ -146,12 +148,15 @@ const smoothies: ProductSection[] = [
     title: "Fruit & Tropical",
     blurb: "Bright, fruit-forward blends.",
     products: [
-      S("Berry Coconut Glow", "#d4639a", { description: "A bright, tropical blend of pineapple, mango, mixed berries, and banana." }),
-      S("Coco Loco", "#f2d27a", { description: "A creamy tropical smoothie made with mango, dates, and banana." }),
-      S("Blue Spirulina", "#3aa0d8", { ingredients: "Pineapple, Apple, Lime, Banana, Blue Spirulina", description: "Blended with your choice of base." }),
-      S("Tiffany & Co", "#4fb6dd", { ingredients: "Pineapple, Apple, Lime, Banana, Blue Spirulina", description: "Blended with your choice of coconut water or mylk." }),
+      S("Berry Coconut Glow", "#d4639a", { ingredients: "Pineapple, Mango, Mixed Berries, Banana" }),
+      S("Coco Loco", "#f2d27a", { ingredients: "Mango, Dates, Banana" }),
+      S("Immunity Boost", "#f0b81f", { ingredients: "Turmeric" }),
+      S("Moringa Mango Glow", "#e9c43a", { ingredients: "Moringa, Mango" }),
+      S("Soursop Tropical Breeze", "#f2cf4a", { ingredients: "Soursop" }),
+      S("Blue Spirulina", "#3aa0d8", { ingredients: "Pineapple, Apple, Lime, Banana, Blue Spirulina" }),
+      S("Tiffany & Co", "#4fb6dd", { ingredients: "Pineapple, Apple, Lime, Banana, Blue Spirulina" }),
       S("Tiffany Lemonade", "#5fd0d0", { ingredients: "Lemon, Apple, Blue Spirulina" }),
-      S("Sweet Dream", "#c2306f", { note: "Super Protein", description: "A protein-packed blend of mixed berries and pineapple." }),
+      S("Sweet Dream", "#c2306f", { note: "Super Protein", ingredients: "Mixed Berries, Pineapple" }),
     ],
   },
   {
@@ -160,10 +165,10 @@ const smoothies: ProductSection[] = [
     blurb: "Leafy greens blended smooth.",
     products: [
       S("Tropical Green", "#7fa63a", { ingredients: "Apple, Broccoli, Lemon, Pineapple, Turmeric, Ginger, Banana, Hemp Seeds" }),
-      S("Greens With Envy", "#2f7a2f", { description: "Kale, banana, green spirulina, and hemp seeds." }),
-      S("Green Goddess", "#4f8a2b", { description: "A garden-fresh blend with kale and Swiss chard." }),
-      S("Double Spice Smoothie", "#6a9a35", { description: "A bright, zesty green smoothie with apple, lemon, and ginger." }),
-      S("Avocado Smoothie", "#9cbf4a", { description: "Creamy and naturally sweet, made with avocado, banana, and dates." }),
+      S("Greens With Envy", "#2f7a2f", { ingredients: "Kale, Banana, Green Spirulina, Hemp Seeds" }),
+      S("Green Goddess", "#4f8a2b", { ingredients: "Kale, Swiss Chard" }),
+      S("Double Spice Smoothie", "#6a9a35", { ingredients: "Apple, Lemon, Ginger" }),
+      S("Avocado Smoothie", "#9cbf4a", { ingredients: "Avocado, Banana, Dates" }),
     ],
   },
   {
@@ -172,8 +177,8 @@ const smoothies: ProductSection[] = [
     blurb: "Root vegetables with fruit for natural sweetness.",
     products: [
       S("Burgundy Blush", "#8e1f3a", { ingredients: "Beet, Apple, Lemon, Carrot, Ginger, Turmeric, Banana" }),
-      S("Crimson Cleanse", "#b0213f", { description: "A bright, refreshing blend built on beets." }),
-      S("Sweet Carrot Smoothie", "#ee8a2a", { description: "Naturally sweet, blended with carrots." }),
+      S("Crimson Cleanse", "#b0213f", { ingredients: "Beet" }),
+      S("Sweet Carrot Smoothie", "#ee8a2a", { ingredients: "Carrot" }),
     ],
   },
   {
@@ -182,16 +187,28 @@ const smoothies: ProductSection[] = [
     blurb: "Rich, filling smoothies made with raw cacao.",
     products: [
       S("C.A.B.", "#7a5236", { ingredients: "Raw Cacao, Banana, Almond Mylk, Hemp Seeds" }),
-      S("Body Builder", "#6b4430", { description: "A rich, chocolatey mocha smoothie made with raw cacao." }),
-      S("Boost Me Up", "#5e3b28", { note: "Protein", description: "A rich, mocha-inspired smoothie made with cold brew." }),
-      S("Cacao Sea Moss", "#6e4a35", { description: "A creamy chocolate smoothie with almonds, dates, and sea moss." }),
+      S("Body Builder", "#6b4430", { ingredients: "Raw Cacao" }),
+      S("Boost Me Up", "#5e3b28", { note: "Protein", ingredients: "Cold Brew Coffee" }),
+      S("Cacao Sea Moss", "#6e4a35", { ingredients: "Raw Cacao, Sea Moss, Almonds, Dates" }),
     ],
   },
   {
-    id: "build-your-own",
-    title: "Build Your Own",
+    id: "anniversary-250",
+    title: "250th Anniversary",
+    blurb: "Limited smoothies for America's 250th anniversary.",
     products: [
-      S("Build Your Own", "#ED8D1F", { description: "Pick almond or coconut mylk as your base, then mix in your favorite fruits and greens." }),
+      S("Oliver Cromwell", "#9b1d35", { ingredients: "Beet, Apple, Lemon, Carrot, Ginger, Banana, Turmeric, Coconut" }),
+      S("Prince Whipple", "#efe3c4", { ingredients: "Banana, Coconut Water, Sea Moss" }),
+      S("Peter Salem", "#2f8fd6", { ingredients: "Pineapple, Apple, Lime, Mint, Coconut, Banana, Blue Spirulina" }),
+      S("Soul of 1776", "#2f8fd6", { note: "Layered", ingredients: "Oliver Cromwell, Prince Whipple, and Peter Salem layered in one cup" }),
+    ],
+  },
+  {
+    id: "daily-custom",
+    title: "Daily & Custom",
+    products: [
+      S("Smoothie of the Day", "#ED8D1F", { ingredients: "Rotating daily selection" }),
+      S("Build Your Own", "#ED8D1F", { ingredients: "Almond or Coconut Mylk base, plus your choice of fruits and greens" }),
     ],
   },
 ];
@@ -202,7 +219,7 @@ export const categories: Category[] = [
     title: "Juices",
     tagline: "Cold pressed juices, nut mylks, and wellness shots",
     description:
-      "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold press. No heat and no oxidation, just nutrient-dense juice served in our signature square bottles.",
+      "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold press. Never heated or HPP processed, just nutrient-dense juice served in our signature square bottles.",
     image: productJuicesImg,
     sections: juices,
   },
@@ -228,6 +245,7 @@ export const categories: Category[] = [
     tagline: "Fruit, green, and protein smoothies, blended to order",
     description: "16 oz smoothies made with 100% organic produce and our house nut mylks, blended fresh when you order.",
     image: juiceColorfulImg,
+    heroCups: ["#d4639a", "#f2cf4a", "#3aa0d8", "#4f8a2b", "#8e1f3a", "#7a5236", "#ee8a2a"],
     sections: smoothies,
   },
   {
