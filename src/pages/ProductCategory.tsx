@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import Layout from "@/components/Layout";
-import ProductCard, { Cup } from "@/components/ProductCard";
+import ProductCard, { VesselIcon } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { categories, categoryHref, TOAST_ORDER_URL } from "@/data/menu";
 
@@ -16,7 +16,7 @@ const ProductCategory = () => {
   return (
     <Layout>
       {/* Hero */}
-      {category.heroCups ? (
+      {category.heroArt ? (
         <section className="relative overflow-hidden bg-secondary">
           <div
             className="absolute inset-0 opacity-60"
@@ -31,11 +31,16 @@ const ProductCategory = () => {
               <p className="mt-2 max-w-md text-secondary-foreground/80">{category.tagline}</p>
             </div>
             <div className="flex items-end gap-2 md:gap-3">
-              {category.heroCups.map((c, i) => (
-                <Cup
-                  key={c}
+              {category.heroArt.colors.map((c, i) => (
+                <VesselIcon
+                  key={c + i}
+                  vessel={category.heroArt!.vessel}
                   color={c}
-                  className={`w-auto drop-shadow-lg ${i % 2 === 0 ? "h-24 md:h-32" : "h-20 md:h-28"} ${i > 4 ? "hidden sm:block" : ""}`}
+                  className={`drop-shadow-lg ${
+                    category.heroArt!.vessel === "cup"
+                      ? `w-auto ${i % 2 === 0 ? "h-24 md:h-32" : "h-20 md:h-28"}`
+                      : `h-auto ${i % 2 === 0 ? "w-16 md:w-24" : "w-14 md:w-20"}`
+                  } ${i > 4 ? "hidden sm:block" : ""}`}
                 />
               ))}
             </div>
@@ -58,6 +63,7 @@ const ProductCategory = () => {
       {category.sections ? (
         <>
           {/* Section jump bar */}
+          {category.sections.length > 1 && (
           <div className="sticky top-16 z-30 border-b bg-card/95 backdrop-blur md:top-20">
             <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 md:px-6">
               {category.sections.map((s) => (
@@ -71,6 +77,7 @@ const ProductCategory = () => {
               ))}
             </div>
           </div>
+          )}
 
           <section className="section-padding mx-auto max-w-6xl">
             <p className="mx-auto mb-12 max-w-2xl text-center leading-relaxed text-muted-foreground">{category.description}</p>

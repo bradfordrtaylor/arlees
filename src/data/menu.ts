@@ -8,8 +8,6 @@ import productDessertsImg from "@/assets/product-desserts.jpg";
 import cleanseImg from "@/assets/cleanse-bottles-enhanced.jpg";
 import foodSpreadImg from "@/assets/food-spread-vibrant.jpg";
 import juiceColorfulImg from "@/assets/juice-colorful.jpg";
-import saladImg from "@/assets/salad-vibrant.jpg";
-import collardWrapImg from "@/assets/collard-wrap.jpg";
 
 export type Product = {
   name: string;
@@ -19,11 +17,13 @@ export type Product = {
   size?: string;
   seasonal?: boolean;
   note?: string;
-  /** Short description, used when a full ingredient list isn't published. */
-  description?: string;
-  /** Drawn as a bottle (juices) or a cup (smoothies). */
-  vessel?: "bottle" | "cup";
+  /** Flavor list, for items sold in several flavors (shown above ingredients). */
+  flavors?: string;
+  /** Icon drawn on the card. Defaults to bottle. */
+  vessel?: Vessel;
 };
+
+export type Vessel = "bottle" | "cup" | "bowl" | "tub" | "pizza" | "slice";
 
 export type ProductSection = {
   id: string;
@@ -38,8 +38,8 @@ export type Category = {
   tagline: string;
   description: string;
   image: string;
-  /** Draw an illustrated row of cups in these colors instead of the photo hero. */
-  heroCups?: string[];
+  /** Draw an illustrated row of icons instead of the photo hero. */
+  heroArt?: { vessel: Vessel; colors: string[] };
   /** If set, the dropdown and overview link here instead of /product-information/:slug */
   href?: string;
   sections?: ProductSection[];
@@ -213,6 +213,120 @@ const smoothies: ProductSection[] = [
   },
 ];
 
+const item = (vessel: Vessel) => (name: string, color: string, ingredients: string, extra: Partial<Product> = {}): Product => ({
+  name,
+  color,
+  ingredients,
+  vessel,
+  ...extra,
+});
+const B = item("bowl");
+const T = item("tub");
+const D = item("slice");
+
+const bowls: ProductSection[] = [
+  {
+    id: "bowls",
+    title: "Bowls",
+    blurb: "Blended fruit bowls and oatmeal bowls.",
+    products: [
+      B("Acai Bowl", "#5a1f45", "Acai, Coconut Mylk", { note: "Unsweetened" }),
+      B("Chia Pudding Bowl", "#c98aa8", "Chia Seeds, Strawberries, Dates, Cinnamon, Vanilla"),
+      B("Banana Bowl", "#e8c98a", "Banana, Almond Mylk, choice of superfoods"),
+      B("Green Bowl", "#4f8a2b", "Kale, Banana, Pineapple, Coconut Mylk, topped with Granola, Fruit, Seeds"),
+      B("Island Mango Bowl", "#f2b51f", "Mango", { note: "No added sugar" }),
+      B("Oatmeal Bowl", "#e2d3b0", "Rolled Oats, Granola, Fruit, Seeds, Coconut"),
+      B("Apple Pie Oatmeal Bowl", "#c99a5b", "Gluten-Free Rolled Oats, Apple, Lemon, Warm Spices"),
+    ],
+  },
+  {
+    id: "breakfast",
+    title: "Breakfast",
+    blurb: "Grab-and-go breakfast, made fresh.",
+    products: [
+      B("Mixed Fruit with Cashew Cream", "#f2a33a", "Assorted Fruit and Berries, Cashew Cream, Cacao Nibs, Coconut", { size: "16 oz" }),
+      B("Strawberry Chia Pudding", "#d65a6e", "Chia Seeds, Strawberry, Pineapple, Mango, Mixed Berries", { seasonal: true }),
+      B("Power Granola Cereal", "#c49a62", "Apricot, Sprouted Almonds, Dates, Vanilla, Coconut, Rolled Oats, Blueberry, Pumpkin Seeds, Pink Himalayan Salt", { seasonal: true }),
+      B("Overnight Oats", "#e6d6b4", "Gluten-Free Oats, Mixed Fruit, Berries", { seasonal: true }),
+    ],
+  },
+];
+
+const dips: ProductSection[] = [
+  {
+    id: "dips",
+    title: "Dips & Spreads",
+    blurb: "House-made in small batches.",
+    products: [
+      T("Cashew Scallion Cream Cheese", "#efe9da", "Cashews, Scallions, Acidophilus (Probiotic), Pink Himalayan Salt"),
+      T("Smoked Cashew Cream Cheese", "#c9874f", "Cashew, Wood Smoked Paprika, Acidophilus (Probiotic), Cayenne, Pink Himalayan Salt"),
+      T("Red Pepper Pesto", "#d2552f", "Red Bell Peppers, Almonds, Cashews, Soaked Flax Seeds, Almond Pulp, Scallions, Acidophilus, Pink Himalayan Salt", { size: "5 oz" }),
+      T("Guacamole", "#8fb84a", "Avocado, Lime, Onion, Cilantro, Spices", { size: "5 oz" }),
+      T("Pico de Gallo", "#d8463a", "Tomato, Red Onion, Cilantro, Lime, Jalapeño, Sea Salt"),
+    ],
+  },
+];
+
+const rawFoods: ProductSection[] = [
+  {
+    id: "raw-foods",
+    title: "Raw Foods",
+    blurb: "Hearty raw vegan meals.",
+    products: [
+      B("Burrito Bowl", "#5b4a3a", "Wild Rice, Onions, Cilantro, Black Beans, Tomato, Green Onion, Cayenne, Cashew Sour Cream"),
+      B("Red Bell Pepper Soup", "#d2452f", "Red Peppers, Sun-Dried Tomatoes, Cashews, Garlic", { seasonal: true }),
+      B("Lettuce Wrap Taco Bowl", "#a9c86a", "Iceberg Lettuce, Walnut Taco \"Meat\"", { seasonal: true }),
+    ],
+  },
+  {
+    id: "raw-vegan-pizza",
+    title: "Raw Vegan Pizza",
+    blurb: "A sprouted kale and almond crust, never baked.",
+    products: [
+      item("pizza")(
+        "Raw Vegan Pizza",
+        "#c8452e",
+        "Sun-Dried Tomato, Lemon Juice, Olive Oil, Balsamic Vinegar, Garlic, Dates, Oregano, Basil, Thyme, Red Pepper, Cashews, Mushrooms, Onion, Spinach. Crust: Kale, Sprouted Almonds, Cashews, Acidophilus, Sprouted Flax Seeds, Scallions, Thyme, Oregano, Rosemary, Pink Himalayan Salt",
+      ),
+    ],
+  },
+];
+
+const desserts: ProductSection[] = [
+  {
+    id: "cheesecakes",
+    title: "Cheesecakes",
+    blurb: "Raw cashew cheesecakes on a date and almond crust.",
+    products: [
+      D("Cashew Cheesecake", "#f3e6cf", "Cashew, Almond, Dates, Coconut Oil, Lemon, Vanilla Bean, Pink Himalayan Salt, Agave", {
+        flavors: "Vanilla, Strawberry, Blueberry, Raspberry, Blackberry, Mango, Key Lime",
+        note: "Slices, squares & minis",
+      }),
+    ],
+  },
+  {
+    id: "chocolate",
+    title: "Chocolate",
+    blurb: "Made with raw cacao.",
+    products: [
+      D("Raw Truffles", "#4a2c1f", "Walnuts, Raw Cacao, Dates, Coconut Oil"),
+      D("Chocolate Mousse Parfait", "#6b4430", "Avocado, Raw Cacao, Dates, Cashews, Coconut Oil, Agave, Vanilla"),
+      D("Chocolate Almond Butter Cup", "#5a3624", "Raw Cacao, Walnuts, Almonds, Raisins, Dates, Cinnamon"),
+      D("Fudge Brownie Squares", "#4f2f20", "Raw Cacao, Walnuts, Almonds, Raisins, Dates, Cinnamon, Vanilla, Pink Himalayan Salt"),
+      D("Flourless Chocolate Cake", "#3e2418", "Raw Cacao, Walnuts, Raisins, Dates, Cinnamon, Vanilla, Pink Himalayan Salt, Agave, Coconut Oil", { seasonal: true }),
+      D("Chocolate Mousse Espresso Pie", "#5e3b28", "Chocolate Mousse, Espresso", { seasonal: true }),
+    ],
+  },
+  {
+    id: "more-desserts",
+    title: "More Desserts",
+    products: [
+      D("Carrot Cake", "#e08a3a", "Carrots, Cashews, Walnuts, Dates, Raisins, Coconut", { seasonal: true }),
+      D("Banana Pudding", "#f1dc94", "Banana", { seasonal: true }),
+    ],
+  },
+];
+
 export const categories: Category[] = [
   {
     slug: "juices",
@@ -232,45 +346,47 @@ export const categories: Category[] = [
     href: "/cleanses",
   },
   {
-    slug: "bowls",
-    title: "Bowls",
-    tagline: "Acai, chia, green, mango, and oatmeal bowls",
-    description:
-      "Blended fruit bowls and oatmeal bowls topped with fresh fruit, granola, seeds, and coconut. 100% organic, vegan, and gluten-free.",
-    image: saladImg,
-  },
-  {
     slug: "smoothies",
     title: "Smoothies",
     tagline: "Fruit, green, and protein smoothies, blended to order",
     description: "16 oz smoothies made with 100% organic produce and our house nut mylks, blended fresh when you order.",
     image: juiceColorfulImg,
-    heroCups: ["#d4639a", "#f2cf4a", "#3aa0d8", "#4f8a2b", "#8e1f3a", "#7a5236", "#ee8a2a"],
+    heroArt: { vessel: "cup", colors: ["#d4639a", "#f2cf4a", "#3aa0d8", "#4f8a2b", "#8e1f3a", "#7a5236", "#ee8a2a"] },
     sections: smoothies,
+  },
+  {
+    slug: "bowls",
+    title: "Bowls & Breakfast",
+    tagline: "Acai, chia, green, mango, and oatmeal bowls",
+    description: "Blended fruit bowls, oatmeal bowls, and grab-and-go breakfast. 100% organic, vegan, gluten-free, and GMO-free.",
+    image: foodSpreadImg,
+    heroArt: { vessel: "bowl", colors: ["#5a1f45", "#f2b51f", "#4f8a2b", "#c98aa8", "#e8c98a"] },
+    sections: bowls,
+  },
+  {
+    slug: "raw-foods",
+    title: "Raw Foods",
+    tagline: "Raw vegan pizza, burrito bowls, and more",
+    description: "Raw vegan meals made with 100% organic ingredients. Gluten-free, GMO-free, and never cooked.",
+    image: foodSpreadImg,
+    sections: rawFoods,
   },
   {
     slug: "dips",
     title: "Dips",
-    tagline: "Cashew cream cheeses, guacamole, pesto, and more",
-    description:
-      "House-made cashew cream cheeses, guacamole, pico de gallo, and red pepper pesto. Great with our raw crackers or as a spread.",
+    tagline: "Cashew cream cheeses, guacamole, pesto, and pico",
+    description: "House-made dips and spreads made with 100% organic ingredients.",
     image: foodSpreadImg,
-  },
-  {
-    slug: "food",
-    title: "Food",
-    tagline: "Wraps, raw pizza, salads, and more",
-    description:
-      "Collard green wraps, raw vegan pizza, salads, burrito bowls, and nori rolls. All wraps are made with fresh collard greens, never bread or tortillas.",
-    image: collardWrapImg,
+    heroArt: { vessel: "tub", colors: ["#efe9da", "#c9874f", "#d2552f", "#8fb84a", "#d8463a"] },
+    sections: dips,
   },
   {
     slug: "desserts",
     title: "Desserts",
-    tagline: "Cashew cheesecakes, truffles, and mousse",
-    description:
-      "Raw vegan cheesecakes, chocolate mousse, truffles, almond butter cups, and key lime squares. Free from gluten, GMOs, and refined sugar.",
+    tagline: "Cashew cheesecakes, truffles, brownies, and mousse",
+    description: "Raw vegan desserts made with 100% organic ingredients. Gluten-free, GMO-free, and no refined sugar.",
     image: productDessertsImg,
+    sections: desserts,
   },
 ];
 
