@@ -1,63 +1,46 @@
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import productJuicesImg from "@/assets/product-juices.jpg";
-import productShotsImg from "@/assets/product-shots.jpg";
-import productRawfoodImg from "@/assets/product-rawfood.jpg";
-import productDessertsImg from "@/assets/product-desserts.jpg";
-
-const categories = [
-  {
-    title: "Cold Pressed Juices",
-    image: productJuicesImg,
-    description: "Made fresh daily from 100% organic fruits and vegetables using a hydraulic cold-press process. No heat, no oxidation — just pure, nutrient-dense juice packed with enzymes and vibrant flavor. Served in our signature 16 oz square bottles.",
-    items: ["Kale Blends", "Beet Blend", "Pineapple Blend", "Lemon Blend", "Lime Blend", "Almond Blend"],
-  },
-  {
-    title: "Wellness Shots",
-    image: productShotsImg,
-    description: "Small but mighty 2 oz shots packed with powerful, functional ingredients. Our Immunity Booster blends turmeric, lemon, ginger, and cayenne into a single concentrated dose to kickstart your day, support your immune system, and fight inflammation. 100% raw, organic, and vegan — just the good stuff, nothing else.",
-    items: ["Immunity Booster", "Turmeric · Lemon · Ginger · Cayenne", "2 oz / 59 ml"],
-  },
-  {
-    title: "Raw Vegan Foods",
-    image: productRawfoodImg,
-    description: "Vibrant salads, collard green wraps, raw vegan pizza, nori rolls, and crunchy nutrient-packed snacks. All wraps are made exclusively with fresh collard greens — never bread or tortillas. Everything is made without gluten, GMOs, preservatives, or refined sugars.",
-    items: ["Salads", "Collard Green Wraps", "Raw Vegan Pizza", "Nori Rolls", "Snacks"],
-  },
-  {
-    title: "Vegan Desserts",
-    image: productDessertsImg,
-    description: "Pure, plant-based indulgence made with 100% organic, raw ingredients. Free from gluten, GMOs, and refined sugars.",
-    items: ["Cashew Cheesecake Slices", "Chocolate Mousse with Brownie", "Key Lime Pie Squares", "Almond Butter Cups"],
-  },
-];
+import { categories, categoryHref, TOAST_ORDER_URL } from "@/data/menu";
 
 const ProductInformation = () => {
   return (
     <Layout>
-      <section className="section-padding max-w-5xl mx-auto">
-        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-center">Product Information</h1>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          Everything we make is 100% organic, vegan, raw, gluten-free, and GMO-free. Fresh daily, always delicious.
+      <section className="section-padding mx-auto max-w-6xl">
+        <h1 className="mb-4 text-center font-heading text-4xl font-bold md:text-5xl">Product Information</h1>
+        <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
+          Everything we make is 100% organic, vegan, raw, gluten-free, and GMO-free. Made fresh daily. Choose a category to see what we offer.
         </p>
 
-        <div className="space-y-16">
-          {categories.map((cat, i) => (
-            <div key={cat.title} className={`grid md:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
-              <img src={cat.image} alt={cat.title} className="rounded-lg shadow-lg md:[direction:ltr]" width={1200} height={800} loading="lazy" />
-              <div className="md:[direction:ltr]">
-                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">{cat.title}</h2>
-                <p className="text-muted-foreground leading-relaxed">{cat.description}</p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((c) => (
+            <Link
+              key={c.slug}
+              to={categoryHref(c)}
+              className="group overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow hover:shadow-lg"
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={c.image}
+                  alt={c.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  width={1200}
+                  height={900}
+                />
               </div>
-            </div>
+              <div className="p-5">
+                <h2 className="font-heading text-2xl font-bold group-hover:text-primary">{c.title}</h2>
+                <p className="mt-1 text-sm text-muted-foreground">{c.tagline}</p>
+              </div>
+            </Link>
           ))}
         </div>
 
-        {/* Order CTA */}
-        <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-4">Ready to try it for yourself?</p>
-          <a href="https://order.toasttab.com/online/arlees-raw-blends-trenton" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
+        <div className="mt-16 text-center">
+          <p className="mb-4 text-muted-foreground">Ready to try it for yourself?</p>
+          <a href={TOAST_ORDER_URL} target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-primary font-bold text-primary-foreground hover:bg-primary/90">
               Order Now
             </Button>
           </a>

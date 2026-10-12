@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/arlees-logo.png";
+import { categories, categoryHref } from "@/data/menu";
 
 type NavLink = {
   label: string;
@@ -13,7 +14,14 @@ type NavLink = {
 
 const mainLinks: NavLink[] = [
   { label: "Home", path: "/" },
-  { label: "Product Information", path: "/product-information" },
+  {
+    label: "Product Information",
+    path: "/product-information",
+    dropdown: [
+      { label: "All Products", path: "/product-information" },
+      ...categories.map((c) => ({ label: c.title, path: categoryHref(c) })),
+    ],
+  },
   {
     label: "About",
     path: "/about",
@@ -31,8 +39,12 @@ const mainLinks: NavLink[] = [
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const location = useLocation();
+  const isActive = (link: NavLink) =>
+    link.path === "/product-information"
+      ? location.pathname.startsWith("/product-information")
+      : !!link.dropdown?.some((d) => d.path === location.pathname);
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b">
@@ -48,25 +60,24 @@ const Navbar = () => {
               <div
                 key={link.path}
                 className="relative group"
-                onMouseEnter={() => setAboutOpen(true)}
-                onMouseLeave={() => setAboutOpen(false)}
+                onMouseEnter={() => setOpenMenu(link.path)}
+                onMouseLeave={() => setOpenMenu(null)}
               >
                 <button
                   className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary inline-flex items-center gap-1 ${
-                    ["/about", "/faq", "/blog", "/find-us"].includes(location.pathname)
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground"
+                    isActive(link) ? "text-primary bg-primary/10" : "text-muted-foreground"
                   }`}
                 >
                   {link.label}
                   <ChevronDown size={14} />
                 </button>
-                {aboutOpen && (
+                {openMenu === link.path && (
                   <div className="absolute top-full left-0 mt-0 bg-card border rounded-lg shadow-lg py-2 min-w-[160px] z-50">
                     {link.dropdown.map((sub) => (
                       <Link
                         key={sub.path}
                         to={sub.path}
+                        onClick={() => setOpenMenu(null)}
                         className={`block px-4 py-2 text-sm hover:bg-muted transition-colors ${
                           location.pathname === sub.path ? "text-primary font-semibold" : "text-muted-foreground"
                         }`}
@@ -129,23 +140,21 @@ const Navbar = () => {
             link.dropdown ? (
               <div key={link.path}>
                 <button
-                  onClick={() => setAboutOpen(!aboutOpen)}
+                  onClick={() => setOpenMenu(openMenu === link.path ? null : link.path)}
                   className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-sm font-medium ${
-                    ["/about", "/faq", "/blog", "/find-us"].includes(location.pathname)
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground"
+                    isActive(link) ? "text-primary bg-primary/10" : "text-muted-foreground"
                   }`}
                 >
                   {link.label}
-                  <ChevronDown size={14} className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown size={14} className={`transition-transform ${openMenu === link.path ? "rotate-180" : ""}`} />
                 </button>
-                {aboutOpen && (
+                {openMenu === link.path && (
                   <div className="pl-6 space-y-1 mt-1">
                     {link.dropdown.map((sub) => (
                       <Link
                         key={sub.path}
                         to={sub.path}
-                        onClick={() => setMobileOpen(false)}
+                        onClick={() => { setMobileOpen(false); setOpenMenu(null); }}
                         className={`block px-3 py-2 rounded-md text-sm ${
                           location.pathname === sub.path ? "text-primary font-semibold" : "text-muted-foreground"
                         }`}
