@@ -117,7 +117,7 @@ const juices: ProductSection[] = [
       { name: "Immunity Booster", ingredients: "Turmeric, Lemon, Ginger, Cayenne", color: "#e3a020", size: "2 oz" },
       { name: "Ginger Shot", ingredients: "Ginger", color: "#e6c66a", size: "2 oz" },
       { name: "Elderberry Shot", ingredients: "Elderberry Syrup, Lemon", color: "#4a1a3a", size: "2 oz" },
-      { name: "Fire Cider", color: "#c4632a", size: "2 oz" },
+      { name: "Fire Cider", ingredients: "Grapefruit, Orange, Lemon, Cayenne, Garlic, Apple Cider Vinegar", color: "#c4632a", size: "2 oz" },
       { name: "Turmeric Shot", ingredients: "Turmeric", color: "#e5a51b", size: "2 oz", seasonal: true },
       { name: "Wheatgrass Shot", ingredients: "Wheatgrass", color: "#4e8a2e", size: "2 oz", seasonal: true },
     ],
